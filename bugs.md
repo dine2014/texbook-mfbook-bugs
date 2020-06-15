@@ -4,7 +4,7 @@ Page | line | Typo | Correction
 -----|------|------|------------
 A51|19|`‘‘` yields‘‘|`‘‘` yields ‘‘
 A368|8|'*40*=`SP`|'*40* = `SP`
-A457|right column|`[1]`, 23, <sub>119</sub>|`[1]` (progress report), 23, <sub>119</sub>
+A457|right column|`[1]`, 23, <u>119</u>|`[1]` (progress report), 23, <u>119</u>
 A475|left column|programs, for computers, 38, 165, 234|programs, for computers, 38, 165, *234*
 Cx|-4|More about Macros|More About Macros
 C80|14|**penpos**|*penpos*
