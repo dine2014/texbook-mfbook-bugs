@@ -1,4 +1,4 @@
-This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. All of them are found in 2020 and reported to karl or tex-k, but of course I do not claim to be the first finder of them. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
+This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. All of them were found in 2020 and reported to karl or tex-k, but of course I do not claim to be the first finder of them. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
 
 Page | line | Typo | Correction
 -----|------|------|------------
@@ -14,6 +14,7 @@ C116|8|**hide**|*hide*
 C134|-4|*heart* [math italic]|*heart* [text italic]
 C143|1|‘hide’|“hide”
 C150|21|\| sin *θ*\|, \| cos *θ*\||\|sin *θ*\|, \|cos *θ*\|
+C157|6|`begingroup`\<statement list\>\<expression\> `endgroup`|`begingroup`\<statement list\>\<expression\>`endgroup`
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
 C183|25|**incr**|incr
@@ -28,6 +29,8 @@ C219|25|subscripts and attributes|["attribute" is an unexplained concept]
 C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
 C235|8–17|*theta* [math italic]|*theta* [text italic]
 C237|18–20|**or**|or
+C237|22|false|**false**
+C238|26|whatevers|`whatever`s
 C242|-4–-2|**of**|of
 C242|-1|**labels**(0,1,2,3,4);|**labels**(0, 1, 2, 3, 4);
 C243|7–8|**of**|of
