@@ -7,6 +7,7 @@ A368|8|'*40*=`SP`|'*40* = `SP`
 A457|right column|`[1]`, 23, <u>119</u>|`[1]` (progress report), 23, <u>119</u>
 A475|left column|programs, for computers, 38, 165, 234|programs, for computers, 38, 165, *234*
 Cx|-4|More about Macros|More About Macros
+C28|12|*down* [math italic]|*down* [text italic]
 C80|14|**penpos**|*penpos*
 C114|23|**of**|of
 C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
@@ -15,6 +16,7 @@ C134|-4|*heart* [math italic]|*heart* [text italic]
 C143|1|‘hide’|“hide”
 C150|21|\| sin *θ*\|, \| cos *θ*\||\|sin *θ*\|, \|cos *θ*\|
 C157|6|`begingroup`\<statement list\>\<expression\> `endgroup`|`begingroup`\<statement list\>\<expression\>`endgroup`
+C163|-11–-10|*jut* [math italic]|*jut* [text italic]
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
 C183|25|**incr**|incr
@@ -45,6 +47,8 @@ C261|10|`makegrid(`\<pairs\>`)(`\<pairs\>`)`|`makegrid(`\<numerics\>`)(`\<numeri
 C262|-8|**hide**|*hide*
 C267|8|‘superellipse’|‘*superellipse*’
 C267|15|‘interpath’|‘*interpath*’
+C287|-3|expandafters|**expandafter**s
+C293|24|solve|*solve*
 C298|18–20|**tensepath**|*tensepath*
 C319|25|“spacefactor”|“space factor”
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
