@@ -2,11 +2,12 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 
 Page | line | Typo | Correction
 -----|------|------|------------
-A51|19|`‘‘` yields‘‘|`‘‘` yields ‘‘
+A51|19|\`\` yields“|\`\` yields “
 A368|8|'*40*=`SP`|'*40* = `SP`
 A457|right column|`[1]`, 23, <u>119</u>|`[1]` (progress report), 23, <u>119</u>
 A475|left column|programs, for computers, 38, 165, 234|programs, for computers, 38, 165, *234*
 Cx|-4|More about Macros|More About Macros
+C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
 C80|14|**penpos**|*penpos*
 C114|23|**of**|of
@@ -16,6 +17,7 @@ C134|-4|*heart* [math italic]|*heart* [text italic]
 C143|1|‘hide’|“hide”
 C150|21|\| sin *θ*\|, \| cos *θ*\||\|sin *θ*\|, \|cos *θ*\|
 C157|6|`begingroup`\<statement list\>\<expression\> `endgroup`|`begingroup`\<statement list\>\<expression\>`endgroup`
+C163|1, 21|*ht* [math italic]|*ht* [text italic]
 C163|-11–-10|*jut* [math italic]|*jut* [text italic]
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
@@ -33,9 +35,12 @@ C235|8–17|*theta* [math italic]|*theta* [text italic]
 C237|18–20|**or**|or
 C237|22|false|**false**
 C238|26|whatevers|`whatever`s
+C241|2|`\mode="cheapo"`|`\mode=cheapo`
 C242|-4–-2|**of**|of
 C242|-1|**labels**(0,1,2,3,4);|**labels**(0, 1, 2, 3, 4);
 C243|7–8|**of**|of
+C243|10|**labels**(0,1,2,3,4);|**labels**(0, 1, 2, 3, 4);
+C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
 C243|28–29|(*origin* .. *z*1 .. *z*2 .. *z*3 .. *z*4 .. *z*5 .. *z*6 .. *z*7 ..<br>*origin* .. −*z*7 .. −*z*6 .. −*z*5 .. −*z*4 .. −*z*3 .. −*z*2 .. −*z*1 .. cycle)|(*origin* .. *z*<sub>1</sub> .. *z*<sub>2</sub> .. *z*<sub>3</sub> .. *z*<sub>4</sub> .. *z*<sub>5</sub> .. *z*<sub>6</sub> .. *z*<sub>7</sub> ..<br>*origin* .. −*z*<sub>7</sub> .. −*z*<sub>6</sub> .. −*z*<sub>5</sub> .. −*z*<sub>4</sub> .. −*z*<sub>3</sub> .. −*z*<sub>2</sub> .. −*z*<sub>1</sub> .. cycle)
 C244|-10|*region*=**nullpicture**;|*region* = **nullpicture**;
@@ -48,6 +53,7 @@ C262|-8|**hide**|*hide*
 C267|8|‘superellipse’|‘*superellipse*’
 C267|15|‘interpath’|‘*interpath*’
 C287|-3|expandafters|**expandafter**s
+C290|8|*dx* [math italic]|*dx* [text italic]
 C293|24|solve|*solve*
 C298|18–20|**tensepath**|*tensepath*
 C319|25|“spacefactor”|“space factor”
