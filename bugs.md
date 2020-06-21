@@ -1,6 +1,6 @@
 This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. All of them were found in 2020 and reported to karl or tex-k, but of course I do not claim to be the first finder of them. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_. "\*" stands for errors already reported by others (according to karl).
 
-Page | line | Typo | Correction
+Page | Line | Typo | Correction
 -----|------|------|------------
 A51|19|\`\` yields“|\`\` yields “
 A368|8|'*40*=`SP`|'*40* = `SP`
@@ -64,7 +64,7 @@ C319|25|“spacefactor”|“space factor”
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
 C324|7|[65.3]|`[65.3]`
 C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ’, and ‘ø’
-mf.web|§107|((2<sup>29</sup>\*p+q) **div** (2\*q)|(2<sup>29</sup>\*p+q) **div** (2\*q)
+mf.web|§107|((2<sup>29</sup>\**p*+*q*) **div** (2\**q*)|(2<sup>29</sup>\**p*+*q*) **div** (2\**q*)
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
 
