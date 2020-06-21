@@ -2,7 +2,7 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 
 Page | Line | Typo | Correction
 -----|------|------|------------
-A51|19|\`\` yields“|\`\` yields “
+A51|19|<code>``</code> yields“|<code>``</code> yields “
 A368|8|'*40*=`SP`|'*40* = `SP`
 A457|right column|`[1]`, 23, <u>119</u>|`[1]` (progress report), 23, <u>119</u>
 A475|left column|programs, for computers, 38, 165, 234|programs, for computers, 38, 165, *234*
