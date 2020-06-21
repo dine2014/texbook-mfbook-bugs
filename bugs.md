@@ -30,7 +30,7 @@ C203|14|(*stem*,*curve*)|(*stem*, *curve*)
 C203|21|*d*<sub>*n*</sub> := …*d*<sub>2</sub> := *d*<sub>1</sub>|*d*<sub>*n*</sub> := … := *d*<sub>2</sub> := *d*<sub>1</sub>
 C218|-12|**let** [[= (; **let** ]] =)|**let** [[ = (; **let** ]] = )
 C219|25|subscripts and attributes|["attribute" is an unexplained concept]
-C224|9|`<insert>&nbsp;&nbsp;mode_setup`|`<insert>&nbsp;&nbsp;&nbsp;mode_setup`
+C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
 \*C224|-10–-7|`259.0005`|`259.00049` [also reverse the order of the four lines]
 C228|-9|`p.4,l.94`|`l.94`
 C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
