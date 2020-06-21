@@ -1,4 +1,4 @@
-This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. All of them were found in 2020 and reported to karl or tex-k, but of course I do not claim to be the first finder of them. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
+This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. All of them were found in 2020 and reported to karl or tex-k, but of course I do not claim to be the first finder of them. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_. "\*" stands for errors already reported by others (according to karl).
 
 Page | line | Typo | Correction
 -----|------|------|------------
@@ -30,6 +30,9 @@ C203|14|(*stem*,*curve*)|(*stem*, *curve*)
 C203|21|*d*<sub>*n*</sub> := …*d*<sub>2</sub> := *d*<sub>1</sub>|*d*<sub>*n*</sub> := … := *d*<sub>2</sub> := *d*<sub>1</sub>
 C218|-12|**let** [[= (; **let** ]] =)|**let** [[ = (; **let** ]] = )
 C219|25|subscripts and attributes|["attribute" is an unexplained concept]
+C224|9|`<insert>&nbsp;&nbsp;mode_setup`|`<insert>&nbsp;&nbsp;&nbsp;mode_setup`
+\*C224|-10–-7|`259.0005`|`259.00049` [also reverse the order of the four lines]
+C228|-9|`p.4,l.94`|`l.94`
 C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
 C235|8–17|*theta* [math italic]|*theta* [text italic]
 C237|18–20|**or**|or
@@ -45,6 +48,7 @@ C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**begin
 C243|28–29|(*origin* .. *z*1 .. *z*2 .. *z*3 .. *z*4 .. *z*5 .. *z*6 .. *z*7 ..<br>*origin* .. −*z*7 .. −*z*6 .. −*z*5 .. −*z*4 .. −*z*3 .. −*z*2 .. −*z*1 .. cycle)|(*origin* .. *z*<sub>1</sub> .. *z*<sub>2</sub> .. *z*<sub>3</sub> .. *z*<sub>4</sub> .. *z*<sub>5</sub> .. *z*<sub>6</sub> .. *z*<sub>7</sub> ..<br>*origin* .. −*z*<sub>7</sub> .. −*z*<sub>6</sub> .. −*z*<sub>5</sub> .. −*z*<sub>4</sub> .. −*z*<sub>3</sub> .. −*z*<sub>2</sub> .. −*z*<sub>1</sub> .. cycle)
 C244|-10|*region*=**nullpicture**;|*region* = **nullpicture**;
 C247|5|*hheight*<sup>#</sup>|*h_height*<sup>#</sup>
+\*C250|11|**endfor**|**fi**
 C257|7|`yoffset`|`boundarychar`
 C259|13|\<modename\>|\<mode name\>
 C260|4|`headerbytes`|`headerbyte`
@@ -68,3 +72,4 @@ General issues:
 - inconsistent use of text italic and math italic for single-letter variables (cf. page C245 line 5)
 - inconsistent use of roman `%` and typewriter `%` in prettyprinted METAFONT programs
 - space factor not turned off after code fragments (e.g. “gives ‘?’&nbsp; a fresh meaning” on page C247, lines -7–-6)
+- The TeXbook uses (thrice) "his or her" which is no longer gender-inclusive
