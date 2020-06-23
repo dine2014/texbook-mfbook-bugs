@@ -10,6 +10,7 @@ Cx|-4|More about Macros|More About Macros
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
 C80|14|**penpos**|*penpos*
+C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C114|23|**of**|of
 C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
 C116|8|**hide**|*hide*
@@ -64,9 +65,12 @@ C319|25|“spacefactor”|“space factor”
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
 C324|7|[65.3]|`[65.3]`
 C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ’, and ‘ø’
+C341|-14|`text`|`\text`
+C358|left column|\*`turningnumber`, 111, 211, 257, *264*|\*`turningnumber`, 211, 257, *264*
 mf.web|§107|((2<sup>29</sup>\**p*+*q*) **div** (2\**q*)|(2<sup>29</sup>\**p*+*q*) **div** (2\**q*)
-mf.web|§323|the the log *n* factor|the log *n* factor
-mf.web|§534|to to vertex *r*|to vertex *r*
+\*mf.web|§323|the the log *n* factor|the log *n* factor
+\*mf.web|§534|to to vertex *r*|to vertex *r*
+mf.web|§632, §720|control sequence|macro
 
 General issues:
 - inconsistent use of text italic and math italic for single-letter variables (cf. page C245 line 5)
