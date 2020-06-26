@@ -45,6 +45,7 @@ C228|-9|`p.4,l.94`|`l.94`
 C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
 C230|11|*tracingedges* = 1|*tracingedges* := 1
 C235|8–17|*theta* [math italic]|*theta* [text italic]
+C236|13|`bc`\_`d`|`bc_d`
 C237|18–20|**or**|or
 C237|22|false|**false**
 C238|26|whatevers|`whatever`s
