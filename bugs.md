@@ -5,6 +5,8 @@ Page | Line | Typo | Correction
 A51|19|<code>``</code> yields“|<code>``</code> yields “
 A164|-14|Exercise 17.20|exercise 17.20
 A368|8|'*40*=`SP`|'*40* = `SP`
+A375|6–7|`\ht0}`|`\ht0 }`
+A407|-5|`\penalty5000}`|`\penalty5000 }`
 A457|right column|`[1]`, 23, <u>119</u>|`[1]` (progress report), 23, <u>119</u>
 A475|left column|programs, for computers, 38, 165, 234|programs, for computers, 38, 165, *234*
 Cx|-4|More about Macros|More About Macros
@@ -24,6 +26,7 @@ C145|-5|METAFONT [logosl10]|METAFONT [logosl9]
 C150|21|\| sin *θ*\|, \| cos *θ*\||\|sin *θ*\|, \|cos *θ*\|
 C151|11|‘T’ [cmr9]|‘T’ [logo9]
 C157|6|`begingroup`\<statement list\>\<expression\> `endgroup`|`begingroup`\<statement list\>\<expression\>`endgroup`
+C160|8–9|[break in the midst of `shifted`]|[break after `->`]
 C163|1, 21|*ht* [math italic]|*ht* [text italic]
 C163|-11–-10|*jut* [math italic]|*jut* [text italic]
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
@@ -60,6 +63,8 @@ C243|28–29|(*origin* .. *z*1 .. *z*2 .. *z*3 .. *z*4 .. *z*5 .. *z*6 .. *z*7 .
 C244|-10|*region*=**nullpicture**;|*region* = **nullpicture**;
 C247|5|*hheight*<sup>#</sup>|*h_height*<sup>#</sup>
 \*C250|11|**endfor**|**fi**
+C251|-3|Iff|If and only if
+C254|-10|`?`|[smallskip] `?`
 C257|7|`yoffset`|`boundarychar`
 C258|5|\<numeric\>`*`\<pair\>|\<numeric\> `*` \<pair\>
 C259|13|\<modename\>|\<mode name\>
@@ -72,6 +77,7 @@ C287|-3|expandafters|**expandafter**s
 C290|8|*dx* [math italic]|*dx* [text italic]
 C293|24|solve|*solve*
 C298|18–20|**tensepath**|*tensepath*
+C318|-16–-15|\<label\>|\<label ending with `:`\>
 C319|25|“spacefactor”|“space factor”
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
 C324|7|[65.3]|`[65.3]`
@@ -84,10 +90,10 @@ mf.web|§107|((2<sup>29</sup>\**p*+*q*) **div** (2\**q*)|(2<sup>29</sup>\**p*+*q
 mf.web|§632, §720|control sequence|macro
 mf.web|§757|he|they [or rewrite the sentence]
 
+Bugs in Appendix I are too numerous to mention here.
+
 General issues:
 - inconsistent use of text italic and math italic for single-letter variables (cf. page C245 line 5)
 - inconsistent use of roman `%` and typewriter `%` in prettyprinted METAFONT programs
 - space factor not turned off after code fragments (e.g. “gives ‘?’&nbsp; a fresh meaning” on page C247, lines -7–-6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
-
-And see [here](https://tug.org/pipermail/tex-k/2020-June/003238.html) for an incomplete list of errors in the Index to The METAFONTbook.
