@@ -22,7 +22,7 @@ C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
 C116|8|**hide**|*hide*
 C134|-4|*heart* [math italic]|*heart* [text italic]
 C143|1|‘hide’|“hide”
-C145|-5|METAFONT [logosl10]|METAFONT [logosl9]
+C145|-5|*METAFONT* [logosl10]|*METAFONT* [logosl9]
 C150|21|\| sin *θ*\|, \| cos *θ*\||\|sin *θ*\|, \|cos *θ*\|
 C151|11|‘T’ [cmr9]|‘T’ [logo9]
 C157|6|`begingroup`\<statement list\>\<expression\> `endgroup`|`begingroup`\<statement list\>\<expression\>`endgroup`
@@ -39,7 +39,7 @@ C202|8|*max*|max
 C202|26|penpos|*penpos*
 C203|14|(*stem*,*curve*)|(*stem*, *curve*)
 C203|21|*d*<sub>*n*</sub> := …*d*<sub>2</sub> := *d*<sub>1</sub>|*d*<sub>*n*</sub> := … := *d*<sub>2</sub> := *d*<sub>1</sub>
-C206|14|METAFONT [logosl10]|METAFONT [logosl9]
+C206|14|*METAFONT* [logosl10]|*METAFONT* [logosl9]
 C218|-12|**let** [[= (; **let** ]] =)|**let** [[ = (; **let** ]] = )
 C219|25|subscripts and attributes|["attribute" is an unexplained concept]
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
@@ -77,6 +77,8 @@ C287|-3|expandafters|**expandafter**s
 C290|8|*dx* [math italic]|*dx* [text italic]
 C293|24|solve|*solve*
 C298|18–20|**tensepath**|*tensepath*
+C305|14|`serif_fit`|`serif_fit#`
+C305|15|`letter_fit`|`letter_fit#`
 C318|-16–-15|\<label\>|\<label ending with `:`\>
 C319|25|“spacefactor”|“space factor”
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
