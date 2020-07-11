@@ -4,6 +4,7 @@ Page | Line | Typo | Correction
 -----|------|------|------------
 A51|19|<code>``</code> yields“|<code>``</code> yields “
 A164|-14|Exercise 17.20|exercise 17.20
+A305|-1|`-\wd0}`|`-\wd0 }`
 A368|8|'*40*=`SP`|'*40* = `SP`
 A375|6–7|`\ht0}`|`\ht0 }`
 A407|-5|`\penalty5000}`|`\penalty5000 }`
