@@ -34,6 +34,7 @@ C160|8–9|[break in the midst of `shifted`]|[break after `->`]
 C163|1, 21|*ht* [math italic]|*ht* [text italic]
 C163|-11–-10|*jut* [math italic]|*jut* [text italic]
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
+C171|4|round(*n*)|round *n*
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
 C176|18|`(x3r, y3r)`|`(x3r,y3r)`
 C176|-7|**if** `@#`(*x_*) : *tx_* **else** :|**if** `@#`(*x_*): *tx_* **else**:
@@ -42,6 +43,7 @@ C178|21|secondarydef|**secondarydef**
 C178|23|tertiarydef|**tertiarydef**
 C180|-3|‘=’|‘=’ or ‘:=’
 C183|25|**incr**|incr
+C187|-11|\<pair primary\>|\<pair expression\>
 C189|14|`"! "` and followed by `"."`|‘`! `’ and followed by ‘`.`’
 C200|18|*autorounding*=*smoothing*=0|*autorounding* = *smoothing* = 0
 C202|8|*max*|max
@@ -50,6 +52,7 @@ C203|14|(*stem*,*curve*)|(*stem*, *curve*)
 C203|21|*d*<sub>*n*</sub> := …*d*<sub>2</sub> := *d*<sub>1</sub>|*d*<sub>*n*</sub> := … := *d*<sub>2</sub> := *d*<sub>1</sub>
 C206|14|*METAFONT* [logosl10]|*METAFONT* [logosl9]
 C210|-1|‘`/`\<numeric token\>’\>|‘`/` \<numeric token\>’ \>
+C214|-6|\<pair primary\>|\<pair expression\>
 C218|-12|**let** [[= (; **let** ]] =)|**let** [[ = (; **let** ]] = )
 C219|25|subscripts and attributes|["attribute" is an unexplained concept]
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
@@ -75,6 +78,7 @@ C247|5|*hheight*<sup>#</sup>|*h_height*<sup>#</sup>
 C247|-7–-6|?|*?*
 C248|1|?|*?*
 \*C250|11|**endfor**|**fi**
+C250|13|a nonnegative even integer|an even integer
 C251|-3|Iff|If and only if
 C254|-10|`?`|[smallskip] `?`
 C257|7|`yoffset`|`boundarychar`
@@ -107,6 +111,26 @@ mf.web|§107|((2<sup>29</sup>\**p*+*q*) **div** (2\**q*)|(2<sup>29</sup>\**p*+*q
 mf.web|§632, §720|control sequence|macro
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
+
+Syntax:
+```
+<numeric atom> ::= <numeric variable> | <numeric argument>
+    | <numeric token primary>
+    | <internal quantity>
+    | normaldeviate
+    | ( <numeric expression> )
+    | begingroup <statement list> <numeric expression> endgroup
+    | length <numeric primary> | length <pair primary>
+    | length <path primary> | length <string primary>
+    | ASCII <string primary> | oct <string primary> | hex <string primary>
+    | <pair part> <pair primary> | <transform part> <transform primary>
+    | angle <pair primary>
+    | turningnumber <path primary> | totalweight <picture primary>
+    | <numeric operator> <numeric primary>
+    | directiontime <pair expression> of <path primary>
+<numeric primary> ::= <numeric atom> [ <numeric expr> , <numeric expr> ]
+    | <numeric atom not followed by `[ <numeric expr> , <numeric expr> ]'>
+```
 
 Bugs in Appendix I are too numerous to mention here.
 
