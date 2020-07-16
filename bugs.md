@@ -17,7 +17,7 @@ C28|12|*down* [math italic]|*down* [text italic]
 C69|11|cosd 90°|cos 90°
 C80|14|**penpos**|*penpos*
 \*C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
-\*C83|19|0.75b + 0.5c + 0.75|0.5c + 0.75b + 0.75
+\*C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C97|10|E [logo10]|E [logo9]
 C114|23|**of**|of
 C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
