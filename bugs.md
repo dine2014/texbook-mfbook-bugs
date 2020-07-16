@@ -105,14 +105,14 @@ mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
 
 Proposed changes to the syntax rules:
-- Add \<future pen argument\> as an alternative in the definition of \<future pen primary\>.</li>
-- Change the definition of \<numeric primary\> to 
-```
-<numeric primary> ::= <numeric atom> [ <numeric expression> , <numeric expression> ]
-    | <numeric atom not followed by `[ <numeric expression> , <numeric expression> ]'>
-```
-and move the alternatives that begin with an operator to the definition of \<numeric atom\>. (This recursive approach handles expressions like `3sqrt3(9)[1,2][3,4][5,6][7,8]`.)    
-Bugs in Appendix I are too numerous to mention here.
+<ul>
+<li>Change the definition of &lt;numeric primary&gt; to
+<pre><code>&lt;numeric primary&gt; ::= &lt;numeric atom&gt; [ &lt;numeric expression&gt; , &lt;numeric expression&gt; ]
+    | &lt;numeric atom not followed by `[ &lt;numeric expression&gt; , &lt;numeric expression&gt; ]'&gt;
+</code></pre>
+and move the alternatives that begin with an operator to the definition of &lt;numeric atom&gt;. (This recursive approach ensures that expressions like <code>3sqrt3(9)[1,2][3,4][5,6][7,8]</code> are properly handled.)</li>
+<li>Add &lt;future pen argument&gt; as an alternative in the definition of &lt;future pen primary&gt;.</li>
+</ul>
 
 General issues:
 - inconsistent use of text italic and math italic for single-letter variables (e.g. page C245 line 5)
