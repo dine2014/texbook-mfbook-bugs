@@ -16,7 +16,8 @@ C28|12|*down* [math italic]|*down* [text italic]
 \*C68|9|`-36.16279`|[that value can't be printed]
 C69|11|cosd 90°|cos 90°
 C80|14|**penpos**|*penpos*
-C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
+\*C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
+\*C83|19|0.75b + 0.5c + 0.75|0.5c + 0.75b + 0.75
 C97|10|E [logo10]|E [logo9]
 C114|23|**of**|of
 C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
@@ -32,7 +33,6 @@ C160|8–9|[break in the midst of `shifted`]|[break after `->`]
 C163|1, 21|*ht* [math italic]|*ht* [text italic]
 C163|-11–-10|*jut* [math italic]|*jut* [text italic]
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
-C171|4|round(*n*)|round *n*
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
 C176|18|`(x3r, y3r)`|`(x3r,y3r)`
 C176|-7|**if** `@#`(*x_*) : *tx_* **else** :|**if** `@#`(*x_*): *tx_* **else**:
@@ -104,26 +104,14 @@ mf.web|§107|((2<sup>29</sup>\**p*+*q*) **div** (2\**q*)|(2<sup>29</sup>\**p*+*q
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
 
-The syntax for \<numeric atom\> and \<numeric primary\> should be changed to properly handle primaries like `1/2(3)[4,5][6,7]`:
+Proposed changes to the syntax rules:
+- Add \<future pen argument\> as an alternative in the definition of \<future pen primary\>.</li>
+- Change the definition of \<numeric primary\> to 
 ```
-<numeric atom> ::= <numeric variable> | <numeric argument>
-    | <numeric token primary>
-    | <internal quantity>
-    | normaldeviate
-    | ( <numeric expression> )
-    | begingroup <statement list> <numeric expression> endgroup
-    | length <numeric primary> | length <pair primary>
-    | length <path primary> | length <string primary>
-    | ASCII <string primary> | oct <string primary> | hex <string primary>
-    | <pair part> <pair primary> | <transform part> <transform primary>
-    | angle <pair primary>
-    | turningnumber <path primary> | totalweight <picture primary>
-    | <numeric operator> <numeric primary>
-    | directiontime <pair expression> of <path primary>
-<numeric primary> ::= <numeric atom> [ <numeric expr> , <numeric expr> ]
-    | <numeric atom not followed by `[ <numeric expr> , <numeric expr> ]'>
+<numeric primary> ::= <numeric atom> [ <numeric expression> , <numeric expression> ]
+    | <numeric atom not followed by `[ <numeric expression> , <numeric expression> ]'>
 ```
-
+and move the alternatives that begin with an operator to the definition of \<numeric atom\>. (This recursive approach handles expressions like `3sqrt3(9)[1,2][3,4][5,6][7,8]`.)    
 Bugs in Appendix I are too numerous to mention here.
 
 General issues:
