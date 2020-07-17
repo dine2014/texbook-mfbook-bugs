@@ -14,6 +14,7 @@ Cx|-4|More about Macros|More About Macros
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
 \*C68|9|`-36.16279`|[that value can't be printed]
+\*C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
 C69|11|cosd 90°|cos 90°
 C80|14|**penpos**|*penpos*
 \*C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
@@ -54,8 +55,10 @@ C210|-1|‘`/`\<numeric token\>’\>|‘`/` \<numeric token\>’ \>
 C218|-12|**let** [[= (; **let** ]] =)|**let** [[ = (; **let** ]] = )
 C219|25|subscripts and attributes|["attribute" is an unexplained concept]
 \*C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
+C228|-3|proofmode|proof mode
 \*C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
 C230|11|*tracingedges* = 1|*tracingedges* := 1
+\*C234|-7|*z*<sub>*k*</sub>|*z*[*k*]
 C235|8–17|*theta* [math italic]|*theta* [text italic]
 C236|13|`bc`\_`d`|`bc_d`
 C237|18–20|**or**|or
@@ -73,6 +76,7 @@ C244|-10|*region*=**nullpicture**;|*region* = **nullpicture**;
 \*C247|5|*hheight*<sup>#</sup>|*h_height*<sup>#</sup>
 C247|-7–-6|?|*?*
 C248|1|?|*?*
+\*C250|1|\<statement list\>|\<statements\>
 \*C250|13|a nonnegative even integer|an even integer
 C251|-3|Iff|If and only if
 \*C254|-10|`?`|[smallskip] `?`
@@ -113,6 +117,27 @@ Proposed changes to the syntax rules:
 and move the alternatives that begin with an operator to the definition of &lt;numeric atom&gt;. (This recursive approach ensures that expressions like <code>3sqrt3(9)[1,2][3,4][5,6][7,8]</code> are properly handled.)</li>
 <li>Add &lt;future pen argument&gt; as an alternative in the definition of &lt;future pen primary&gt;.</li>
 </ul>
+
+Bugs in Appendix I are too numerous to list exhausively, but here are the serious ones. (Since Github Markdown doesn't support underlining, I'm using bold font instead. "\*" of course stands for primitives)
+Entry | Correction
+------|-----------
+Boolean expressions, 170, 257.|boolean expressions, 170, 257.
+\<declaration\>, 56, **171**.|\<declaration\>, **56**, 171.
+\*`directiontime`, *135*, ***136***, 211, 245, 265, *295*.|\*`directiontime`, *135*, ***136***, 211, 245, 265, *298*.
+\*`from` 191, 220, *252*, *277*, *312*.|\*`from`, 191, 220, *252*, *277*, *312*.
+greatest integer function, *see* floor.|greatest integer function, *see* `floor`.
+\<internal quantity\>, 156, 218, 265.|\<internal quantity\>, 156, 218.
+\<keep or drop\>, **118**, 120.|\<keep or drop\>, **118**, 220.
+labels on *proofmode* output, 37, 187, 274–275.|labels on *proof* mode output, 37, 187, 274–275.
+least integer function, *see* ceiling.|least integer function, *see* `ceiling`.
+\*`ligtable`, *97*, *305*, **316**–**317**.|\*`ligtable`, *97*, *305*–*306*, **316**–**317**.
+`offset`, 275, 379.|`offset`, 275, 329.
+pens, 21–39, 147–152, 297–298.|pens, 21–29, 147–152, 297–298.
+`rule`, 234, 328.|`rule`, 328.
+\*`turningnumber`, 111, 211, 257, *264*.|\*`turningnumber`, 211, 257, *264*.
+undelimited suffix parameters, **167**, 176, 265, 270.|undelimited suffix parameters, **167**, 176, 266, 270.
+\*`unknown`, 79–82, 143, **170**, 210.|\*`unknown`, 143, **170**, 210.
+\<with clause\>, **118**, 120.|\<with clause\>, **118**, 220.
 
 General issues:
 - inconsistent use of text italic and math italic for single-letter variables (e.g. page C245 line 5)
