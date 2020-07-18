@@ -118,26 +118,28 @@ and move the alternatives that begin with an operator to the definition of &lt;n
 <li>Add &lt;future pen argument&gt; as an alternative in the definition of &lt;future pen primary&gt;.</li>
 </ul>
 
-Bugs in Appendix I are too numerous to list exhausively, but here are the serious ones. (Since Github Markdown doesn't support underlining, I'm using bold font instead. "\*" of course stands for primitives)
+Bugs in Appendix I are too numerous to list exhausively, but here are the serious ones. (Since GitHub Markdown doesn't support underlining, I'm using bold font instead. "\*" of course stands for primitives)
 Entry | Correction
 ------|-----------
-Boolean expressions, 170, 257.|boolean expressions, 170, 257.
+Boolean expressions, ….|boolean expressions, ….
 \<declaration\>, 56, **171**.|\<declaration\>, **56**, 171.
-\*`directiontime`, *135*, ***136***, 211, 245, 265, *295*.|\*`directiontime`, *135*, ***136***, 211, 245, 265, *298*.
-\*`from` 191, 220, *252*, *277*, *312*.|\*`from`, 191, 220, *252*, *277*, *312*.
+\*`directiontime`, …, *295*.|\*`directiontime`, …, *298*.
+\*`from` 191, ….|\*`from`, 191, ….
 greatest integer function, *see* floor.|greatest integer function, *see* `floor`.
-\<internal quantity\>, 156, 218, 265.|\<internal quantity\>, 156, 218.
-\<keep or drop\>, **118**, 120.|\<keep or drop\>, **118**, 220.
-labels on *proofmode* output, 37, 187, 274–275.|labels on *proof* mode output, 37, 187, 274–275.
+\<internal quantity\>, …, 265.|\<internal quantity\>, ….
+\<keep or drop\>, …, 120.|\<keep or drop\>, …, 220.
+labels on *proofmode* output, ….|labels on *proof* mode output, ….
 least integer function, *see* ceiling.|least integer function, *see* `ceiling`.
-\*`ligtable`, *97*, *305*, **316**–**317**.|\*`ligtable`, *97*, *305*–*306*, **316**–**317**.
-`offset`, 275, 379.|`offset`, 275, 329.
-pens, 21–39, 147–152, 297–298.|pens, 21–29, 147–152, 297–298.
-`rule`, 234, 328.|`rule`, 328.
-\*`turningnumber`, 111, 211, 257, *264*.|\*`turningnumber`, 211, 257, *264*.
-undelimited suffix parameters, **167**, 176, 265, 270.|undelimited suffix parameters, **167**, 176, 266, 270.
-\*`unknown`, 79–82, 143, **170**, 210.|\*`unknown`, 143, **170**, 210.
-\<with clause\>, **118**, 120.|\<with clause\>, **118**, 220.
+\*`ligtable`, …, *305*, ….|\*`ligtable`, …, *305*–*306*, ….
+`offset`, …, 379.|`offset`, …, 329.
+pens, 21–39, ….|pens, 21–29, ….
+\*`rotated`, …, 212, ….|\*`rotated`, …, 213, ….
+`rule`, 234, ….|`rule`, ….
+\*`scaled`, …, 212, ….|\*`scaled`, …, 213, ….
+\*`turningnumber`, 111, ….|\*`turningnumber`, ….
+undelimited suffix parameters, …, 265, ….|undelimited suffix parameters, …, 266, ….
+\*`unknown`, 79–82, ….|\*`unknown`, ….
+\<with clause\>, …, 120.|\<with clause\>, …, 220.
 
 General issues:
 - inconsistent use of text italic and math italic for single-letter variables (e.g. page C245 line 5)
@@ -146,10 +148,11 @@ General issues:
 - space factor not turned off after code fragments (e.g. “gives ‘?’&nbsp; a fresh meaning” on page C247, lines -7–-6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
-Incidentally, here are some bugs that have been discovered before by others, and that I have independently discovered:
+Incidentally, here are some bugs in *The METAFONTbook* others have reported:
 Page | Line | Typo | Correction
 -----|------|------|------------
 \*C224|-10–-7|`259.0005`|`259.00049` [also reverse the order of the four lines]
 \*C250|11|**endfor**|**fi**
+\*[C333](https://tug.org/pipermail/tex-k/2019-October/003055.html)|-14|`fi"`|`fi "`
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
