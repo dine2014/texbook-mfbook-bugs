@@ -18,7 +18,6 @@ C187|-11|\<pair primary\>|\<pair expression\>
 C214|-6|\<pair primary\>|\<pair expression\>
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
 C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
-C234|-7|*z*<sub>*k*</sub>|*z*[*k*]
 C241|2|`\mode="cheapo"`|`\mode=cheapo`
 C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
@@ -113,6 +112,7 @@ C262|-8|**hide**|*hide*
 C267|8|‘superellipse’|‘*superellipse*’
 C267|15|‘interpath’|‘*interpath*’
 C287|-3|expandafters|**expandafter**s
+C288|-13, -6|Boolean|boolean
 C290|8|*dx* [math italic]|*dx* [text italic]
 C293|24|solve|*solve*
 C298|18–20|**tensepath**|*tensepath*
@@ -152,6 +152,7 @@ General issues:
 - inconsistent use of text italic and math italic for single-letter variables (e.g. page C245 line 5)
 - inconsistent use of roman `%` and typewriter `%` in prettyprinted METAFONT programs
 - inconsistent use of `\ldots` and `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
+- inconsistent use of *z*[*k*] and *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **enddef** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
 - space factor not turned off after code fragments (e.g. “gives ‘?’&nbsp; a fresh meaning” on page C247, lines -7–-6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
