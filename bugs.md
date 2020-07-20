@@ -125,7 +125,7 @@ mf.web|§107|((2<sup>29</sup>\**p*+*q*) **div** (2\**q*)|(2<sup>29</sup>\**p*+*q
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
 
-Bugs in Appendix I are too numerous to list exhausively, but here are the serious ones. (Since GitHub Markdown doesn't support underlining, I'm using bold font instead.)
+Bugs in Appendix I of *The METAFONTbook* are too numerous to list exhausively, but here are the serious ones. (Since GitHub Markdown doesn't support underlining, I'm using bold font instead.)
 Entry | Correction
 ------|-----------
 Boolean expressions, ….|boolean expressions, ….
@@ -152,7 +152,7 @@ General issues:
 - inconsistent use of text italic and math italic for single-letter variables (e.g. page C245 line 5)
 - inconsistent use of roman `%` and typewriter `%` in prettyprinted METAFONT programs
 - inconsistent use of `\ldots` and `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
-- inconsistent use of *z*[*k*] and *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **enddef** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
+- inconsistent use of *z*[*k*] and *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
 - space factor not turned off after code fragments (e.g. “gives ‘?’&nbsp; a fresh meaning” on page C247, lines -7–-6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
