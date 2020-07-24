@@ -48,11 +48,12 @@ and move the alternatives that begin with an operator to the definition of &lt;n
 
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. **addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, −180).
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial from the private array *u_*[], and private dependencies may show up in the computer's response. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] would print the result 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, and a subsequent **showdependencies** will reveal the private dependencies
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial from a list of dependencies across the private array *u_*[]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, which is implicit even if it is correct:
+> `*`**showdependencies**;<br>
 > *u_*<sub>1</sub> = 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
 > *u_*<sub>2</sub> = 0.5*b* + *u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
-> *d* = 0.5*u_*<sub>4</sub><br>
-> *c* = *u_*<sub>3</sub> − 0.5*u_*<sub>4</sub>
+> *d* = 0.5*u_*<sub>4</sub> % *u_*<sub>4</sub> = 2*d*<br>
+> *c* = *u_*<sub>3</sub> − 0.5*u_*<sub>4</sub> % *u_*<sub>3</sub> = *c* + *d*
 
 The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
 > **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
@@ -69,7 +70,7 @@ The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to
 > &nbsp;&nbsp;**endfor** *c_*[[[1]]] := (1 - *t*) \* *c_*[[[1]]]; **endfor**<br>
 > &nbsp;*nn_* := 0; **for** *u* = *uu_*: + *c_*[[[incr *nn_*]]] \* *u* **endfor** **endgroup** **enddef**;
 
-Henceforth **show** .5[2*a*, 2*b*, 2*c*, 2*d*] would print 0.25*d* + 0.75*c* + 0.75*b* + 0.25*a*, and everyone will be happy. (The alternative definition of ‘Bernshtein’,
+Henceforth **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints 0.25*d* + 0.75*c* + 0.75*b* + 0.25*a*, and everyone will be happy. (The alternative definition of ‘Bernshtein’,
 > **primarydef** *t* Bernshtein *nn* = **begingroup** *nn_* := 0; *f_* := *t*/(1 - *t*);<br>
 > &nbsp;**def** *next_* = *co_* := takepower *nn* - 1 of (1 - *t*);<br>
 > &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* *f_* \* (*nn* - incr *nn_*) / *nn_* **enddef** **enddef**;<br>
