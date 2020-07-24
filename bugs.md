@@ -39,10 +39,10 @@ mf.web|§632, §720|control sequence|macro
 Proposed changes to the syntax rules in *The METAFONTbook*:
 <ul>
 <li>Change the definition of &lt;numeric primary&gt; to
-<pre><code>&lt;numeric primary&gt; ::= &lt;numeric atom&gt; [ &lt;numeric expression&gt; , &lt;numeric expression&gt; ]
-    | &lt;numeric atom not followed by `[ &lt;numeric expression&gt; , &lt;numeric expression&gt; ]'&gt;
-</code></pre>
-and move the alternatives that begin with an operator to the definition of &lt;numeric atom&gt;. (This recursive approach ensures that expressions like <code>3sqrt3(9)[1,2][3,4][5,6][7,8]</code> are properly handled.)</li>
+<blockquote>&lt;numeric primary&gt; → &lt;numeric atom&gt; <code>[</code> &lt;numeric expression&gt; <code>,</code> &lt;numeric expression&gt; <code>]</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;| &lt;numeric atom not followed by ‘<code>[</code> &lt;numeric expression&gt; <code>,</code> &lt;numeric expression&gt; <code>]</code>’&gt;
+</blockquote>
+and move the alternatives that begin with an operator to the definition of &lt;numeric atom&gt;. (This recursive approach ensures that expressions like 3 sqrt 3(9)[1, 2][3, 4][5, 6][7, 8] are properly handled.)</li>
 <li>Add &lt;future pen argument&gt; as an alternative in the definition of &lt;future pen primary&gt;.</li>
 </ul>
 
@@ -73,10 +73,10 @@ The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to
 Henceforth **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints 0.25*d* + 0.75*c* + 0.75*b* + 0.25*a*, and everyone will be happy. (The alternative definition of ‘Bernshtein’,
 > **primarydef** *t* Bernshtein *nn* = **begingroup** *nn_* := 0; *f_* := *t*/(1 - *t*);<br>
 > &nbsp;**def** *next_* = *co_* := takepower *nn* - 1 of (1 - *t*);<br>
-> &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* *f_* \* (*nn* - incr *nn_*) / *nn_* **enddef** **enddef**;<br>
+> &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* (*nn* - incr *nn_*) \* *f_* / *nn_* **enddef** **enddef**;<br>
 > &nbsp;**for** *u* = *uu_*: + **begingroup** *next_*; *co_* **endgroup** \* *u* **endfor** **endgroup** **enddef**;
 
-also works whenever *t* ≠ 1, and that case isn't hard to patch.)
+also works when *t* is not near 1.)
 
 ## Typographical errors
 
@@ -108,9 +108,6 @@ C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
 C176|18|`(x3r, y3r)`|`(x3r,y3r)`
 C176|-7|**if** `@#`(*x_*) : *tx_* **else** :|**if** `@#`(*x_*): *tx_* **else**:
-C178|19|primarydef|**primarydef**
-C178|21|secondarydef|**secondarydef**
-C178|23|tertiarydef|**tertiarydef**
 C183|25|**incr**|incr
 C189|14|`"! "` and followed by `"."`|‘`! `’ and followed by ‘`.`’
 C200|18|*autorounding*=*smoothing*=0|*autorounding* = *smoothing* = 0
