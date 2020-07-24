@@ -52,8 +52,8 @@ The program on page C299 has three problems: (1) It doesn't work with *flex* due
 > `*`**showdependencies**;<br>
 > *u_*<sub>1</sub> = 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
 > *u_*<sub>2</sub> = 0.5*b* + *u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
-> *d* = 0.5*u_*<sub>4</sub> % *u_*<sub>4</sub> = 2*d*<br>
-> *c* = *u_*<sub>3</sub> − 0.5*u_*<sub>4</sub> % *u_*<sub>3</sub> = *c* + *d*
+> *d* = 0.5*u_*<sub>4</sub><br>
+> *c* = *u_*<sub>3</sub> − 0.5*u_*<sub>4</sub>
 
 The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
 > **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
