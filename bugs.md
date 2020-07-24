@@ -69,7 +69,13 @@ The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to
 > &nbsp;&nbsp;**endfor** *c_*[[[1]]] := (1 - *t*) \* *c_*[[[1]]]; **endfor**<br>
 > &nbsp;*nn_* := 0; **for** *u* = *uu_*: + *c_*[[[incr *nn_*]]] \* *u* **endfor** **endgroup** **enddef**;
 
-Henceforth **show** .5[2*a*, 2*b*, 2*c*, 2*d*] would print 0.25*d* + 0.75*c* + 0.75*b* + 0.25a, and everyone will be happy.
+Henceforth **show** .5[2*a*, 2*b*, 2*c*, 2*d*] would print 0.25*d* + 0.75*c* + 0.75*b* + 0.25*a*, and everyone will be happy. (The alternative definition of ‘Bernshtein’,
+> **primarydef** *t* Bernshtein *nn* = **begingroup** *nn_* := 0; *f_* := *t*/(1 - *t*);<br>
+> &nbsp;**def** *next_* = *co_* := takepower *nn* - 1 of (1 - *t*);<br>
+> &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* *f_* \* (*nn* - incr *nn_*) / *nn_* **enddef** **enddef**;<br>
+> &nbsp;**for** *u* = *uu_*: + **begingroup** *next_*; *co_* **endgroup** \* *u* **endfor** **endgroup** **enddef**;
+
+also works whenever *t* ≠ 1, and that case isn't hard to patch.)
 
 ## Typographical errors
 
