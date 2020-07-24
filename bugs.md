@@ -28,6 +28,7 @@ C254|-10|`?`|[smallskip] `?`
 C257|7|`yoffset`|`boundarychar`
 C260|4|`headerbytes`|`headerbyte`
 C261|10|`makegrid(`\<pairs\>`)(`\<pairs\>`)`|`makegrid(`\<numerics\>`)(`\<numerics\>`)`
+C291|18|`setu_ u`|`save u_; setu_ u`
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
 C318|-16–-15|\<label\>|\<label ending with `:`\>
@@ -35,7 +36,7 @@ C323|27|**proofrule**|**proofrule**(*z*<sub>1</sub>, *z*<sub>2</sub>)
 C341|-14|`text`|`\text`
 mf.web|§632, §720|control sequence|macro
 
-Proposed changes to the syntax rules:
+Proposed changes to the syntax rules in *The METAFONTbook*:
 <ul>
 <li>Change the definition of &lt;numeric primary&gt; to
 <pre><code>&lt;numeric primary&gt; ::= &lt;numeric atom&gt; [ &lt;numeric expression&gt; , &lt;numeric expression&gt; ]
@@ -44,6 +45,31 @@ Proposed changes to the syntax rules:
 and move the alternatives that begin with an operator to the definition of &lt;numeric atom&gt;. (This recursive approach ensures that expressions like <code>3sqrt3(9)[1,2][3,4][5,6][7,8]</code> are properly handled.)</li>
 <li>Add &lt;future pen argument&gt; as an alternative in the definition of &lt;future pen primary&gt;.</li>
 </ul>
+
+Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. **addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, −180).
+
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial from the private array *u_*[], and private dependencies may show up in the computer's response. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] would print the result 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, and a subsequent **showdependencies** will reveal the private dependencies
+> *u_*<sub>1</sub> = 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
+> *u_*<sub>2</sub> = 0.5*b* + *u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
+> *d* = 0.5*u_*<sub>4</sub><br>
+> *c* = *u_*<sub>3</sub> − 0.5*u_*<sub>4</sub>
+
+The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
+> **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
+> **let** [[[ = [; **let** ]]] = ]; **let** [ = *lbrack*;<br>
+> **def** *lookahead*(**text** *t*) =<br>
+> &nbsp;*hide*(**let** [ = *lbrack*;<br>
+> &nbsp;&nbsp;**for** *u* = *t*, *hide*(*nn_* := 0; **let** *uu_* = \\): **if** incr *nn_* = 1: **def** *uu_* = *u* **enddef**<br>
+> &nbsp;&nbsp;&nbsp;**else**: **expandafter** **def** **expandafter** *uu_* **expandafter** = *uu_*, *u* **enddef**<br>
+> &nbsp;&nbsp;**fi**; **endfor**)<br>
+> &nbsp;**if** *nn_* \< 3: [[[*uu_*]]] **else**: Bernshtein *nn_* **fi** **enddef**;<br>
+> **primarydef** *t* Bernshtein *nn* = **begingroup** *c_*[[[1]]] := 1;<br>
+> &nbsp;**for** *n* = 1 **upto** *nn* - 1: *c_*[[[*n* + 1]]] := *t* \* *c_*[[[*n*]]];<br>
+> &nbsp;&nbsp;**for** *k* = *n* **downto** 2: *c_*[[[*k*]]] := *t*[[[*c_*[[[*k*]]], *c_*[[[*k* - 1]]] ]]];<br>
+> &nbsp;&nbsp;**endfor** *c_*[[[1]]] := (1 - *t*) \* *c_*[[[1]]]; **endfor**<br>
+> &nbsp;*nn_* := 0; **for** *u* = *uu_*: + *c_*[[[incr *nn_*]]] \* *u* **endfor** **endgroup** **enddef**;
+
+Henceforth **show** .5[2*a*, 2*b*, 2*c*, 2*d*] would print 0.25*d* + 0.75*c* + 0.75*b* + 0.25a, and everyone will be happy.
 
 ## Typographical errors
 
@@ -116,6 +142,7 @@ C288|-13, -6|Boolean|boolean
 C290|8|*dx* [math italic]|*dx* [text italic]
 C293|24|solve|*solve*
 C298|18–20|**tensepath**|*tensepath*
+C307|-2|ad-hoc dimension|ad hoc dimension
 C319|25|“spacefactor”|“space factor”
 C324|2–3|≠|\<\>
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
@@ -134,6 +161,7 @@ Boolean expressions, ….|boolean expressions, ….
 \*`from` 191, ….|\*`from`, 191, ….
 greatest integer function, *see* floor.|greatest integer function, *see* `floor`.
 \<internal quantity\>, …, 265.|\<internal quantity\>, ….
+Journal of Algorithms, ….|*Journal of Algorithms*, ….
 \<keep or drop\>, …, 120.|\<keep or drop\>, …, 220.
 labels on *proofmode* output, ….|labels on *proof* mode output, ….
 least integer function, *see* ceiling.|least integer function, *see* `ceiling`.
