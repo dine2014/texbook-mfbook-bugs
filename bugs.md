@@ -5,6 +5,7 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 Page | Line | Typo | Correction
 -----|------|------|-----------
 A305|-1|`-\wd0}`|`-\wd0 }`
+A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
 A375|6–7|`\ht0}`|`\ht0 }`
 A407|-5|`\penalty5000}`|`\penalty5000 }`
 A420|11|`-.1ex }`|`-.1ex\relax}`
@@ -152,7 +153,7 @@ C324|2–3|≠|\<\>
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
 C324|7|[65.3]|`[65.3]`
 C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ’, and ‘ø’
-mf.web|§107|((2<sup>29</sup>\**p*+*q*) **div** (2\**q*)|(2<sup>29</sup>\**p*+*q*) **div** (2\**q*)
+mf.web|§107|((2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)|(2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
 
