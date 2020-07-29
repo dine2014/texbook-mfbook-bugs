@@ -14,6 +14,7 @@ C68|9|`-36.16279`|[that value can't be printed]
 C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
+C136|18|0.28|0.27614
 C180|-3|‘=’|‘=’ or ‘:=’
 C187|-11|\<pair primary\>|\<pair expression\>
 C214|-6|\<pair primary\>|\<pair expression\>
@@ -29,13 +30,25 @@ C254|-10|`?`|[smallskip] `?`
 C257|7|`yoffset`|`boundarychar`
 C260|4|`headerbytes`|`headerbyte`
 C261|10|`makegrid(`\<pairs\>`)(`\<pairs\>`)`|`makegrid(`\<numerics\>`)(`\<numerics\>`)`
+C279|1|`blacker:=.2`|`blacker:=.1`
 C291|18|`setu_ u`|`save u_; setu_ u`
+C295|2|3.37|3.37218
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
 C318|-16–-15|\<label\>|\<label ending with `:`\>
 C323|27|**proofrule**|**proofrule**(*z*<sub>1</sub>, *z*<sub>2</sub>)
 C341|-14|`text`|`\text`
 mf.web|§632, §720|control sequence|macro
+
+The `\ninebig` macro in `manmac.tex` typesets `\big` delimiters in 9-point math by borrowing the 10-point ones in `cmr10` and `cmsy10`, but it forgets to retain the 9-point axis height. Thus examples like `\ninepoint $\bigl(()\bigr)$` are not vertically symmetrical. (This asymmetry can be observed on page A245, line 20; page C298, line -1; etc.) The macro should probably be changed to something like
+```
+\newdimen\tenaxis \tenaxis=\fontdimen22\tensy
+\newdimen\nineaxis \nineaxis=\fontdimen22\ninesy
+\def\ninebig#1{{\hbox{\fontdimen22\tensy=\nineaxis
+  $\textfont0=\tenrm\textfont2=\tensy
+  \left#1\vbox to7.25pt{}\right.\n@space$%
+  \fontdimen22\tensy=\tenaxis}}}
+```
 
 Proposed changes to the syntax rules in *The METAFONTbook*:
 <ul>
@@ -178,7 +191,7 @@ pens, 21–39, ….|pens, 21–29, ….
 \*`scaled`, …, 212, ….|\*`scaled`, …, 213, ….
 \*`turningnumber`, 111, ….|\*`turningnumber`, ….
 undelimited suffix parameters, …, 265, ….|undelimited suffix parameters, …, 266, ….
-\*`unknown`, 79–82, ….|\*`unknown`, ….
+\*`unknown`, 79–82, 143, ….|\*`unknown`, ….
 \<with clause\>, …, 120.|\<with clause\>, …, 220.
 
 General issues:
