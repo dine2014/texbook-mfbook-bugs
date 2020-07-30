@@ -102,7 +102,6 @@ C145|-5|*METAFONT* [logosl10]|*METAFONT* [logosl9]
 C150|21|\| sin *θ*\|, \| cos *θ*\||\|sin *θ*\|, \|cos *θ*\|
 C151|11|‘T’ [cmr9]|‘T’ [logo9]
 C157|6|`begingroup`\<statement list\>\<expression\> `endgroup`|`begingroup`\<statement list\>\<expression\>`endgroup`
-C157|25–27|?|*?*
 C160|8–9|[break in the midst of `shifted`]|[break after `->`]
 C163|1, 21|*ht* [math italic]|*ht* [text italic]
 C163|-11–-10|*jut* [math italic]|*jut* [text italic]
@@ -134,8 +133,6 @@ C243|7–8|**of**|of
 C243|10|**labels**(0,1,2,3,4);|**labels**(0, 1, 2, 3, 4);
 C243|28–29|(*origin* .. *z*1 .. *z*2 .. *z*3 .. *z*4 .. *z*5 .. *z*6 .. *z*7 ..<br>*origin* .. −*z*7 .. −*z*6 .. −*z*5 .. −*z*4 .. −*z*3 .. −*z*2 .. −*z*1 .. cycle)|(*origin* .. *z*<sub>1</sub> .. *z*<sub>2</sub> .. *z*<sub>3</sub> .. *z*<sub>4</sub> .. *z*<sub>5</sub> .. *z*<sub>6</sub> .. *z*<sub>7</sub> ..<br>*origin* .. −*z*<sub>7</sub> .. −*z*<sub>6</sub> .. −*z*<sub>5</sub> .. −*z*<sub>4</sub> .. −*z*<sub>3</sub> .. −*z*<sub>2</sub> .. −*z*<sub>1</sub> .. cycle)
 C244|-10|*region*=**nullpicture**;|*region* = **nullpicture**;
-C247|-7–-6|?|*?*
-C248|1|?|*?*
 C251|-3|Iff|If and only if
 C258|5|\<numeric\>`*`\<pair\>|\<numeric\> `*` \<pair\>
 C259|13|\<modename\>|\<mode name\>
@@ -158,7 +155,8 @@ mf.web|§107|((2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)|(2<sup>29</sup> \
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
 
-Bugs in Appendix I of *The METAFONTbook* are too numerous to list exhausively, but here are the serious ones. (Since GitHub Markdown doesn't support underlining, I'm using bold font instead.)
+Bugs in Appendix I of *The METAFONTbook* are too numerous to list exhausively, but here are the serious ones.
+
 Entry | Correction
 ------|-----------
 Boolean expressions, ….|boolean expressions, ….
@@ -186,7 +184,7 @@ General issues:
 - inconsistent use of text italic and math italic for single-letter variables (e.g. page C245 line 5)
 - inconsistent use of roman `%` and typewriter `%` in prettyprinted METAFONT programs
 - inconsistent use of `\ldots` and `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
-- inconsistent use of *z*[*k*] and *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
+- inconsistent use of *z*[*k*] vs *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
 - space factor not turned off after code fragments (e.g. “gives ‘?’&nbsp; a fresh meaning” on page C247, lines -7–-6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
