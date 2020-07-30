@@ -8,6 +8,7 @@ A305|-1|`-\wd0}`|`-\wd0 }`
 A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
 A375|6–7|`\ht0}`|`\ht0 }`
 A407|-5|`\penalty5000}`|`\penalty5000 }`
+A415|24–27|`\hbox{`[…]`}`|`\vcenter{\hbox{`[…]`}}`
 A420|11|`-.1ex }`|`-.1ex\relax}`
 A423|16|`width0pt }`|`width0pt\relax}`
 C68|9|`-36.16279`|[that value can't be printed]
@@ -17,6 +18,7 @@ C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C136|18|0.28|0.27614
 C180|-3|‘=’|‘=’ or ‘:=’
 C187|-11|\<pair primary\>|\<pair expression\>
+C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
 C214|-6|\<pair primary\>|\<pair expression\>
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
 C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
@@ -40,29 +42,15 @@ C323|27|**proofrule**|**proofrule**(*z*<sub>1</sub>, *z*<sub>2</sub>)
 C341|-14|`text`|`\text`
 mf.web|§632, §720|control sequence|macro
 
-The `\ninebig` macro in `manmac.tex` typesets `\big` delimiters in 9-point math by borrowing the 10-point ones in `cmr10` and `cmsy10`, but it forgets to retain the 9-point axis height. Thus examples like `\ninepoint $\bigl(()\bigr)$` are not vertically symmetrical. (This asymmetry can be observed on page A245, line 20; page C298, line -1; etc.) The macro should probably be changed to something like
-```
-\newdimen\tenaxis \tenaxis=\fontdimen22\tensy
-\newdimen\nineaxis \nineaxis=\fontdimen22\ninesy
-\def\ninebig#1{{\hbox{\fontdimen22\tensy=\nineaxis
-  $\textfont0=\tenrm\textfont2=\tensy
-  \left#1\vbox to7.25pt{}\right.\n@space$%
-  \fontdimen22\tensy=\tenaxis}}}
-```
+Change the definition of \<numeric primary\> on pages C72 and C211 to
+> \<numeric primary\> → \<numeric atom\> `[` \<numeric expression\> `,` \<numeric expression\> `]`<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;| \<numeric atom not followed by ‘`[` \<numeric expression\> `,` \<numeric expression\> `]`’\>
 
-Proposed changes to the syntax rules in *The METAFONTbook*:
-<ul>
-<li>Change the definition of &lt;numeric primary&gt; to
-<blockquote>&lt;numeric primary&gt; → &lt;numeric atom&gt; <code>[</code> &lt;numeric expression&gt; <code>,</code> &lt;numeric expression&gt; <code>]</code><br>
-&nbsp;&nbsp;&nbsp;&nbsp;| &lt;numeric atom not followed by ‘<code>[</code> &lt;numeric expression&gt; <code>,</code> &lt;numeric expression&gt; <code>]</code>’&gt;
-</blockquote>
-and move the alternatives that begin with an operator to the definition of &lt;numeric atom&gt;. (This recursive approach ensures that expressions like 3 sqrt 3(9)[1, 2][3, 4][5, 6][7, 8] are properly handled.)</li>
-<li>Add &lt;future pen argument&gt; as an alternative in the definition of &lt;future pen primary&gt;.</li>
-</ul>
+and move the alternatives that begin with an operator to the definition of \<numeric atom\>. (This recursive approach ensures that expressions like 3 sqrt 3(9)[1, 2][3, 4][5, 6][7, 8] are properly handled.)
 
-Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. **addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, −180).
+Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial from a list of dependencies across the private array *u_*[]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, which is implicit even if it is correct:
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial by iteration over the private array *u_*[]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, which is implicit even if it is correct:
 > `*`**showdependencies**;<br>
 > *u_*<sub>1</sub> = 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
 > *u_*<sub>2</sub> = 0.5*b* + *u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
