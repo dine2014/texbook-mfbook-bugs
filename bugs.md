@@ -189,6 +189,7 @@ General issues:
 - inconsistent use of `\ldots` vs `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
 - inconsistent use of *z*[*k*] vs *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
 - inconsistent use of ‘`A`’ vs `"A"` when citing characters to be designed (e.g. page C163, lines -4 and -1; page C124, line 3)
+- inconsistent use of ‘;’ and ‘.’ at the end of programs (e.g. page C249)
 - space factor not turned off after code fragments (e.g. “and ‘?’&nbsp;&nbsp;is restored” on page C247, lines -6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
