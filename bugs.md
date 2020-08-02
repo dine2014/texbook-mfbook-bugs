@@ -26,6 +26,8 @@ C241|2|`\mode="cheapo"`|`\mode=cheapo`
 C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
 C247|5|*hheight*<sup>#</sup>|*h_height*<sup>#</sup>
+C249|17|**beginchar**(`"H"`, 13*u*<sup>#</sup>, *ht*<sup>#</sup>, 0);|**beginchar**(`"H"`, 13*u*<sup>#</sup>, *ht*<sup>#</sup>, 0);<br>**pickup** *broad_pen*;
+C249|27|**fill** *bot_serif_edge*<sub>4</sub>|**filldraw** *bot_serif_edge*<sub>4</sub>
 C250|1|\<statement list\>|\<statements\>
 C250|13|a nonnegative even integer|an even integer
 C254|-10|`?`|[smallskip] `?`
@@ -86,6 +88,7 @@ Page | Line | Typo | Correction
 -----|------|------|-----------
 A51|19|<code>``</code> yields“|<code>``</code> yields “
 A164|-14|Exercise 17.20|exercise 17.20
+A248|2|36em|36 em
 A368|8|'*40*=`SP`|'*40* = `SP`
 Cx|-4|More about Macros|More About Macros
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
@@ -181,11 +184,12 @@ undelimited suffix parameters, …, 265, ….|undelimited suffix parameters, …
 \<with clause\>, …, 120.|\<with clause\>, …, 220.
 
 General issues:
-- inconsistent use of text italic and math italic for single-letter variables (e.g. page C245 line 5)
-- inconsistent use of roman `%` and typewriter `%` in prettyprinted METAFONT programs
-- inconsistent use of `\ldots` and `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
+- inconsistent use of text italic vs math italic for single-letter variables (e.g. page C245 line 5)
+- inconsistent use of roman % vs typewriter `%` in prettyprinted METAFONT programs
+- inconsistent use of `\ldots` vs `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
 - inconsistent use of *z*[*k*] vs *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
-- space factor not turned off after code fragments (e.g. “gives ‘?’&nbsp; a fresh meaning” on page C247, lines -7–-6)
+- inconsistent use of ‘`A`’ vs `"A"` when citing characters to be designed (e.g. page C163, lines -4 and -1; page C124, line 3)
+- space factor not turned off after code fragments (e.g. “and ‘?’&nbsp;&nbsp;is restored” on page C247, lines -6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
 ## Other people's bug reports I'm aware of
