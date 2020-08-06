@@ -16,6 +16,7 @@ C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C136|18|0.28|0.27614
+C165|-7|zero or more|zero or one
 C180|-3|‘=’|‘=’ or ‘:=’
 C187|-11|\<pair primary\>|\<pair expression\>
 C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
@@ -52,14 +53,7 @@ and move the alternatives that begin with an operator to the definition of \<num
 
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial by iteration over the private array *u_*[]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, which is implicit even if it is correct:
-> `*`**showdependencies**;<br>
-> *u_*<sub>1</sub> = 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
-> *u_*<sub>2</sub> = 0.5*b* + *u_*<sub>3</sub> − 0.25*u_*<sub>4</sub><br>
-> *d* = 0.5*u_*<sub>4</sub><br>
-> *c* = *u_*<sub>3</sub> − 0.5*u_*<sub>4</sub>
-
-The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial by iteration over the private array *u_*[]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, and you have to **showdependencies** and solve the equations if you want the result in terms of *a*, *b*, *c*, and *d*. The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
 > **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
 > **let** [[[ = [; **let** ]]] = ]; **let** [ = *lbrack*;<br>
 > **def** *lookahead*(**text** *t*) =<br>
@@ -74,13 +68,13 @@ The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to
 > &nbsp;&nbsp;**endfor** *c_*[[[1]]] := (1 - *t*) \* *c_*[[[1]]]; **endfor**<br>
 > &nbsp;*nn_* := 0; **for** *u* = *uu_*: + *c_*[[[incr *nn_*]]] \* *u* **endfor** **endgroup** **enddef**;
 
-Henceforth **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints 0.25*d* + 0.75*c* + 0.75*b* + 0.25*a*, and everyone will be happy. (The alternative definition of ‘Bernshtein’,
+(*nn_* and *uu_* are the new names of *n_* and *u_* to avoid name conflict. The alternative definition of ‘Bernshtein’,
 > **primarydef** *t* Bernshtein *nn* = **begingroup** *nn_* := 0; *f_* := *t*/(1 - *t*);<br>
 > &nbsp;**def** *next_* = *co_* := takepower *nn* - 1 of (1 - *t*);<br>
 > &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* (*nn* - incr *nn_*) \* *f_* / *nn_* **enddef** **enddef**;<br>
 > &nbsp;**for** *u* = *uu_*: + **begingroup** *next_*; *co_* **endgroup** \* *u* **endfor** **endgroup** **enddef**;
 
-also works when *t* is not near 1.)
+is more straightforward, but it doesn't work for *t* ≈ 1!)
 
 ## Typographical errors
 
@@ -111,7 +105,7 @@ C163|-11–-10|*jut* [math italic]|*jut* [text italic]
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
 C176|18|`(x3r, y3r)`|`(x3r,y3r)`
-C176|-7|**if** `@#`(*x_*) : *tx_* **else** :|**if** `@#`(*x_*): *tx_* **else**:
+C176|-7|**if** `@#`(*x_*) : *tx_* **else** : *fx_* **fi** := *x_*; **enddef**;|**if** `@#`(*x_*): *tx_* **else**: *fx_* **fi** := *x_*; **enddef**
 C183|25|**incr**|incr
 C189|14|`"! "` and followed by `"."`|‘`! `’ and followed by ‘`.`’
 C200|18|*autorounding*=*smoothing*=0|*autorounding* = *smoothing* = 0
@@ -150,7 +144,6 @@ C293|24|solve|*solve*
 C298|18–20|**tensepath**|*tensepath*
 C307|-2|ad-hoc dimension|ad hoc dimension
 C319|25|“spacefactor”|“space factor”
-C324|2–3|≠|\<\>
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
 C324|7|[65.3]|`[65.3]`
 C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ’, and ‘ø’
@@ -189,7 +182,8 @@ General issues:
 - inconsistent use of `\ldots` vs `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
 - inconsistent use of *z*[*k*] vs *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
 - inconsistent use of ‘`A`’ vs `"A"` when citing characters to be designed (e.g. page C163, lines -4 and -1; page C124, line 3)
-- inconsistent use of ‘;’ and ‘.’ at the end of programs (e.g. page C249)
+- inconsistent use of ‘;’ vs ‘.’ at the end of programs (e.g. page C249)
+- inconsistent use of ‘<>, <=, >=’ vs ‘≠, ≤, ≥’ in prettyprinted METAFONT programs ([details](https://tug.org/pipermail/tex-k/2020-August/003276.html))
 - space factor not turned off after code fragments (e.g. “and ‘?’&nbsp;&nbsp;is restored” on page C247, lines -6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
