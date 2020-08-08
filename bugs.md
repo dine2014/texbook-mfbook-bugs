@@ -43,6 +43,8 @@ C318|-16–-15|\<label\>|\<label ending with `:`\>
 C323|27|**proofrule**|**proofrule**(*z*<sub>1</sub>, *z*<sub>2</sub>)
 C341|-14|`text`|`\text`
 mf.web|§632, §720|control sequence|macro
+mf.web|§1096|**fontinfo**|**fontdimen**
+mf.web|§1106|`fontinfo`|`fontdimen`
 
 Change the definition of \<numeric primary\> on pages C72 and C211 to
 > \<numeric primary\> → \<numeric atom\> `[` \<numeric expression\> `,` \<numeric expression\> `]`<br>
@@ -52,7 +54,7 @@ and move the alternatives that begin with an operator to the definition of \<num
 
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial by iteration over the private array *u_*[]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> − 0.25*u_*<sub>4</sub>, and you have to **showdependencies** and solve the equations if you want the result in terms of *a*, *b*, *c*, and *d*. The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial by iteration over the private array *u_*[[[]]]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> - 0.25*u_*<sub>4</sub>, and you have to **showdependencies** and solve the equations if you want the result in terms of *a*, *b*, *c*, and *d*. The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
 > **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
 > **let** [[[ = [; **let** ]]] = ]; **let** [ = *lbrack*;<br>
 > **def** *lookahead*(**text** *t*) =<br>
@@ -73,7 +75,7 @@ The program on page C299 has three problems: (1) It doesn't work with *flex* due
 > &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* (*nn* - incr *nn_*) \* *f_* / *nn_* **enddef** **enddef**;<br>
 > &nbsp;**for** *u* = *uu_*: + **begingroup** *next_*; *co_* **endgroup** \* *u* **endfor** **endgroup** **enddef**;
 
-is more straightforward, but it doesn't work for *t* ≈ 1!)
+is faster, but it doesn't work for *t* ≈ 1!)
 
 ## Typographical errors
 
