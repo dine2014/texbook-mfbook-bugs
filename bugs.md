@@ -6,6 +6,7 @@ Page | Line | Typo | Correction
 -----|------|------|-----------
 A305|-1|`-\wd0}`|`-\wd0 }`
 A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
+A342|12|three|five [`\␣` and `\char`]
 A375|6–7|`\ht0}`|`\ht0 }`
 A407|-5|`\penalty5000}`|`\penalty5000 }`
 A415|24–27|`\hbox{`[…]`}`|`\vcenter{\hbox{`[…]`}}`
