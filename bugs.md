@@ -9,7 +9,6 @@ A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
 A342|12|three|five [`\␣` and `\char`]
 A375|6–7|`\ht0}`|`\ht0 }`
 A407|-5|`\penalty5000}`|`\penalty5000 }`
-A415|24–27|`\hbox{`[…]`}`|`\vcenter{\hbox{`[…]`}}`
 A420|11|`-.1ex }`|`-.1ex\relax}`
 A423|16|`width0pt }`|`width0pt\relax}`
 C68|9|`-36.16279`|[that value can't be printed]
@@ -17,6 +16,7 @@ C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C136|18|0.28|0.27614
+C171|17–19|The boolean expression ‘**path** ((0, 0))’ is false, even though ‘((0, 0))’ meets Chapter 14's syntax rules for \<path primary\>, via (\<path expression\>) and (\<path tertiary\>) and (\<pair tertiary\>).|The boolean expression ‘**path** (0, 0)’ is false, even though ‘(0, 0)’ meets Chapter 14's syntax rules for \<path primary\> via \<pair primary\>.
 C180|-3|‘=’|‘=’ or ‘:=’
 C187|-11|\<pair primary\>|\<pair expression\>
 C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
@@ -26,6 +26,7 @@ C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
 C241|2|`\mode="cheapo"`|`\mode=cheapo`
 C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
+C246|17|expands into|is equivalent to
 C247|5|*hheight*<sup>#</sup>|*h_height*<sup>#</sup>
 C249|17|**beginchar**(`"H"`, 13*u*<sup>#</sup>, *ht*<sup>#</sup>, 0);|**beginchar**(`"H"`, 13*u*<sup>#</sup>, *ht*<sup>#</sup>, 0);<br>**pickup** *broad_pen*;
 C249|27|**fill** *bot_serif_edge*<sub>4</sub>|**filldraw** *bot_serif_edge*<sub>4</sub>
@@ -84,7 +85,9 @@ Page | Line | Typo | Correction
 -----|------|------|-----------
 A51|19|<code>``</code> yields“|<code>``</code> yields “
 A164|-14|Exercise 17.20|exercise 17.20
+A226|-7|filename|file name
 A248|2|36em|36 em
+A280|3, 6, 21|\<filename\>|\<file name\>
 A368|8|'*40*=`SP`|'*40* = `SP`
 Cx|-4|More about Macros|More About Macros
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
