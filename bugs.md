@@ -37,6 +37,7 @@ C257|7|`yoffset`|`boundarychar`
 C260|4|`headerbytes`|`headerbyte`
 C261|10|`makegrid(`\<pairs\>`)(`\<pairs\>`)`|`makegrid(`\<numerics\>`)(`\<numerics\>`)`
 C279|1|`blacker:=.2`|`blacker:=.1`
+C289|20|`{{pair x cand x>(0,0)}}`|`{{(pair x) cand x>(0,0)}}`
 C291|18|`setu_ u`|`save u_; setu_ u`
 C295|2|3.37|3.37218
 C305|14|`serif_fit`|`serif_fit#`
@@ -92,6 +93,7 @@ A368|8|'*40*=`SP`|'*40* = `SP`
 Cx|-4|More about Macros|More About Macros
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
+C50|27|`10000`?|`10000`.
 C69|11|cosd 90°|cos 90°
 C80|14|**penpos**|*penpos*
 C97|10|E [logo10]|E [logo9]
@@ -155,6 +157,7 @@ C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ�
 mf.web|§107|((2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)|(2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
+mf.web|§798|node .|node.
 
 Bugs in Appendix I of *The METAFONTbook* are too numerous to list exhausively, but here are the serious ones.
 
