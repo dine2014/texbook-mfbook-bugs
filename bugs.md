@@ -4,6 +4,7 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 
 Page | Line | Typo | Correction
 -----|------|------|-----------
+A215|26|`$`<sub>3</sub>|`$` (math shift character)
 A305|-1|`-\wd0}`|`-\wd0 }`
 A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
 A342|12|three|five [`\␣` and `\char`]
@@ -204,3 +205,17 @@ C250|11|**endfor**|**fi**
 [C333](https://tug.org/pipermail/tex-k/2019-October/003055.html)|-14|`fi"`|`fi "`
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
+
+## Bug that won't be fixed
+
+Page A415, lines 24–25: change
+```
+\def\ninebig#1{{\hbox{$\textfont0=\tenrm\textfont2=\tensy
+  \left#1\vbox to7.25pt{}\right.\n@space$}}}
+```
+to
+```
+\def\ninebig#1{{\vcenter{\hbox{$\textfont0=\tenrm\textfont2=\tensy
+  \left#1\vbox to7.25pt{}\right.\n@space$}}}}
+```
+otherwise formulas like `$\bigl[ [] \bigr]$` will be vertically asymmetrical in nine-point territory. (See page C298, line -1 for an example of this vertical asymmetry.)
