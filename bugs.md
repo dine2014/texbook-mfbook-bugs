@@ -31,7 +31,6 @@ C246|17|expands into|is equivalent to
 C247|5|*hheight*<sup>#</sup>|*h_height*<sup>#</sup>
 C249|17|**beginchar**(`"H"`, 13*u*<sup>#</sup>, *ht*<sup>#</sup>, 0);|**beginchar**(`"H"`, 13*u*<sup>#</sup>, *ht*<sup>#</sup>, 0);<br>**pickup** *broad_pen*;
 C249|27|**fill** *bot_serif_edge*<sub>4</sub>|**filldraw** *bot_serif_edge*<sub>4</sub>
-C250|1|\<statement list\>|\<statements\>
 C250|13|a nonnegative even integer|an even integer
 C254|-10|`?`|[smallskip] `?`
 C257|7|`yoffset`|`boundarychar`
@@ -112,7 +111,6 @@ C163|1, 21|*ht* [math italic]|*ht* [text italic]
 C163|-11–-10|*jut* [math italic]|*jut* [text italic]
 C167|11|\<expression\> of \<primary\>|‘\<expression\> of \<primary\>’
 C172|-11|‘ **for** *x* = 1 **step** 2 **until** 0’ .|‘ **for** *x* = 1 **step** 2 **until** 0 ’.
-C176|18|`(x3r, y3r)`|`(x3r,y3r)`
 C176|-7|**if** `@#`(*x_*) : *tx_* **else** : *fx_* **fi** := *x_*; **enddef**;|**if** `@#`(*x_*): *tx_* **else**: *fx_* **fi** := *x_*; **enddef**
 C183|25|**incr**|incr
 C189|14|`"! "` and followed by `"."`|‘`! `’ and followed by ‘`.`’
@@ -187,10 +185,9 @@ undelimited suffix parameters, …, 265, ….|undelimited suffix parameters, …
 
 General issues:
 - inconsistent use of text italic vs math italic for single-letter variables (e.g. page C245 line 5)
-- inconsistent use of roman % vs typewriter `%` in prettyprinted METAFONT programs
+- inconsistent use of roman “%” vs typewriter “`%`” in prettyprinted METAFONT programs
 - inconsistent use of `\ldots` vs `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
 - inconsistent use of *z*[*k*] vs *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
-- inconsistent use of ‘`A`’ vs `"A"` when citing characters to be designed (e.g. page C163, lines -4 and -1; page C124, line 3)
 - inconsistent use of ‘;’ vs ‘.’ at the end of programs (e.g. page C249)
 - inconsistent use of ‘<>, <=, >=’ vs ‘≠, ≤, ≥’ in prettyprinted METAFONT programs ([details](https://tug.org/pipermail/tex-k/2020-August/003276.html))
 - space factor not turned off after code fragments (e.g. “and ‘?’&nbsp;&nbsp;is restored” on page C247, lines -6)
@@ -200,8 +197,8 @@ General issues:
 
 Page | Line | Typo | Correction
 -----|------|------|------------
-C224|-10–-7|`259.0005`|`259.00049` [also reverse the order of the four lines]
-C250|11|**endfor**|**fi**
+[C224](https://tug.org/pipermail/tex-k/2018-December/002972.html)|-10–-7|`259.0005`|`259.00049` [also reverse the order of the four lines]
+[C250](https://tug.org/pipermail/tex-k/2019-October/003055.html)|11|**endfor**|**fi**
 [C333](https://tug.org/pipermail/tex-k/2019-October/003055.html)|-14|`fi"`|`fi "`
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
