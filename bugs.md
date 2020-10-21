@@ -17,13 +17,11 @@ C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C136|18|0.28|0.27614
-C171|17–19|The boolean expression ‘**path** ((0, 0))’ is false, even though ‘((0, 0))’ meets Chapter 14's syntax rules for \<path primary\>, via (\<path expression\>) and (\<path tertiary\>) and (\<pair tertiary\>).|The boolean expression ‘**path** (0, 0)’ is false, even though ‘(0, 0)’ meets Chapter 14's syntax rules for \<path primary\> via \<pair primary\>.
 C180|-3|‘=’|‘=’ or ‘:=’
 C187|-11|\<pair primary\>|\<pair expression\>
 C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
 C214|-6|\<pair primary\>|\<pair expression\>
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
-C230|8|*tracingcommands* = 3|*tracingcommands* ≥ 3
 C241|2|`\mode="cheapo"`|`\mode=cheapo`
 C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
@@ -43,7 +41,6 @@ C295|2|3.37|3.37218
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
 C318|-16–-15|\<label\>|\<label ending with `:`\>
-C323|27|**proofrule**|**proofrule**(*z*<sub>1</sub>, *z*<sub>2</sub>)
 C341|-14|`text`|`\text`
 mf.web|§632, §720|control sequence|macro
 mf.web|§1096|**fontinfo**|**fontdimen**
@@ -91,8 +88,10 @@ A248|2|36em|36 em
 A280|3, 6, 21|\<filename\>|\<file name\>
 A368|8|'*40*=`SP`|'*40* = `SP`
 Cx|-4|More about Macros|More About Macros
+C22|10|**draw** *z*<sub>1</sub>; **draw** *z*<sub>2</sub>|**draw** *z*<sub>1</sub>;&nbsp;&nbsp;**draw** *z*<sub>2</sub>
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
+C46|15|`\mode=smoke`; `input badio`|`\mode=smoke; input badio`
 C50|27|`10000`?|`10000`.
 C69|11|cosd 90°|cos 90°
 C80|14|**penpos**|*penpos*
