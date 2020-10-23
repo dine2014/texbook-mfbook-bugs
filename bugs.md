@@ -4,7 +4,7 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 
 Page | Line | Typo | Correction
 -----|------|------|-----------
-A215|26|`$`<sub>3</sub>|`$` (math shift character)
+A215|26|`$`<sub>3</sub>|math shift
 A305|-1|`-\wd0}`|`-\wd0 }`
 A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
 A342|12|three|five [`\␣` and `\char`]
@@ -37,6 +37,7 @@ C261|10|`makegrid(`\<pairs\>`)(`\<pairs\>`)`|`makegrid(`\<numerics\>`)(`\<numeri
 C279|1|`blacker:=.2`|`blacker:=.1`
 C289|20|`{{pair x cand x>(0,0)}}`|`{{(pair x) cand x>(0,0)}}`
 C291|18|`setu_ u`|`save u_; setu_ u`
+C292|-10|known *p* - *q*|known (*p* - *q*)
 C295|2|3.37|3.37218
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
