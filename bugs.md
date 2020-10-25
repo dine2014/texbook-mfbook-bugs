@@ -13,7 +13,6 @@ A407|-5|`\penalty5000}`|`\penalty5000 }`
 A420|11|`-.1ex }`|`-.1ex\relax}`
 A423|16|`width0pt }`|`width0pt\relax}`
 C68|9|`-36.16279`|[that value can't be printed]
-C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C136|18|0.28|0.27614
@@ -22,7 +21,6 @@ C187|-11|\<pair primary\>|\<pair expression\>
 C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
 C214|-6|\<pair primary\>|\<pair expression\>
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
-C241|2|`\mode="cheapo"`|`\mode=cheapo`
 C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
 C246|17|expands into|is equivalent to
@@ -34,14 +32,12 @@ C254|-10|`?`|[smallskip] `?`
 C257|7|`yoffset`|`boundarychar`
 C260|4|`headerbytes`|`headerbyte`
 C261|10|`makegrid(`\<pairs\>`)(`\<pairs\>`)`|`makegrid(`\<numerics\>`)(`\<numerics\>`)`
-C279|1|`blacker:=.2`|`blacker:=.1`
 C289|20|`{{pair x cand x>(0,0)}}`|`{{(pair x) cand x>(0,0)}}`
 C291|18|`setu_ u`|`save u_; setu_ u`
 C292|-10|known *p* - *q*|known (*p* - *q*)
 C295|2|3.37|3.37218
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
-C318|-16–-15|\<label\>|\<label ending with `:`\>
 C341|-14|`text`|`\text`
 mf.web|§632, §720|control sequence|macro
 mf.web|§1096|**fontinfo**|**fontdimen**
@@ -55,7 +51,7 @@ and move the alternatives that begin with an operator to the definition of \<num
 
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it calculates the Bernstein polynomial by iteration over the private array *u_*[[[]]]. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> - 0.25*u_*<sub>4</sub>, and you have to **showdependencies** and solve the equations if you want the result in terms of *a*, *b*, *c*, and *d*. The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since it builds private dependencies when calculating the Bernstein polynomial. For example, **show** .5[2*a*, 2*b*, 2*c*, 2*d*] prints the result as 0.75*b* + 0.25*a* + 0.75*u_*<sub>3</sub> - 0.25*u_*<sub>4</sub>, and you have to **showdependencies** and solve the equations if you want the result in terms of *a*, *b*, *c*, and *d*. The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
 > **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
 > **let** [[[ = [; **let** ]]] = ]; **let** [ = *lbrack*;<br>
 > **def** *lookahead*(**text** *t*) =<br>
@@ -89,7 +85,6 @@ A248|2|36em|36 em
 A280|3, 6, 21|\<filename\>|\<file name\>
 A368|8|'*40*=`SP`|'*40* = `SP`
 Cx|-4|More about Macros|More About Macros
-C22|10|**draw** *z*<sub>1</sub>; **draw** *z*<sub>2</sub>|**draw** *z*<sub>1</sub>;&nbsp;&nbsp;**draw** *z*<sub>2</sub>
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
 C46|15|`\mode=smoke`; `input badio`|`\mode=smoke; input badio`
@@ -97,7 +92,6 @@ C50|27|`10000`?|`10000`.
 C69|11|cosd 90°|cos 90°
 C80|14|**penpos**|*penpos*
 C97|10|E [logo10]|E [logo9]
-C114|23|**of**|of
 C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
 C116|8|**hide**|*hide*
 C134|-4|*heart* [math italic]|*heart* [text italic]
@@ -130,12 +124,10 @@ C236|13|`bc`\_`d`|`bc_d`
 C237|18–20|**or**|or
 C237|22|false|**false**
 C238|26|whatevers|`whatever`s
-C242|-4–-2|**of**|of
 C242|-1|**labels**(0,1,2,3,4);|**labels**(0, 1, 2, 3, 4);
 C243|7–8|**of**|of
 C243|10|**labels**(0,1,2,3,4);|**labels**(0, 1, 2, 3, 4);
 C243|28–29|(*origin* .. *z*1 .. *z*2 .. *z*3 .. *z*4 .. *z*5 .. *z*6 .. *z*7 ..<br>*origin* .. −*z*7 .. −*z*6 .. −*z*5 .. −*z*4 .. −*z*3 .. −*z*2 .. −*z*1 .. cycle)|(*origin* .. *z*<sub>1</sub> .. *z*<sub>2</sub> .. *z*<sub>3</sub> .. *z*<sub>4</sub> .. *z*<sub>5</sub> .. *z*<sub>6</sub> .. *z*<sub>7</sub> ..<br>*origin* .. −*z*<sub>7</sub> .. −*z*<sub>6</sub> .. −*z*<sub>5</sub> .. −*z*<sub>4</sub> .. −*z*<sub>3</sub> .. −*z*<sub>2</sub> .. −*z*<sub>1</sub> .. cycle)
-C244|-10|*region*=**nullpicture**;|*region* = **nullpicture**;
 C251|-3|Iff|If and only if
 C258|5|\<numeric\>`*`\<pair\>|\<numeric\> `*` \<pair\>
 C259|13|\<modename\>|\<mode name\>
@@ -185,7 +177,7 @@ undelimited suffix parameters, …, 265, ….|undelimited suffix parameters, …
 
 General issues:
 - inconsistent use of text italic vs math italic for single-letter variables (e.g. page C245 line 5)
-- inconsistent use of roman “%” vs typewriter “`%`” in prettyprinted METAFONT programs
+- inconsistent use of roman ‘%’ vs typewriter ‘`%`’ in prettyprinted METAFONT programs
 - inconsistent use of `\ldots` vs `\cdots` contradicting *The TeXbook*'s advice (e.g. page C176, line 20; page C307, lines 12–13)
 - inconsistent use of *z*[*k*] vs *z*<sub><i>k</i></sub> inside loops like **for** *k* = 1 **upto** 4: … **endfor** ([details](https://tug.org/pipermail/tex-k/2020-July/003269.html))
 - inconsistent use of ‘;’ vs ‘.’ at the end of programs (e.g. page C249)
@@ -197,8 +189,16 @@ General issues:
 
 Page | Line | Typo | Correction
 -----|------|------|------------
+C22|10|**draw** *z*<sub>1</sub>; **draw** *z*<sub>2</sub>|**draw** *z*<sub>1</sub>;&nbsp;&nbsp;**draw** *z*<sub>2</sub>
+C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
+C114|23|**of**|of
 [C224](https://tug.org/pipermail/tex-k/2018-December/002972.html)|-10–-7|`259.0005`|`259.00049` [also reverse the order of the four lines]
-[C250](https://tug.org/pipermail/tex-k/2019-October/003055.html)|11|**endfor**|**fi**
+C241|2|`\mode="cheapo"`|`\mode=cheapo`
+C242|-4–-2|**of**|of
+C244|-10|*region*=**nullpicture**;|*region* = **nullpicture**;
+C250|11|**endfor**|**fi**
+C279|1|`blacker:=.2`|`blacker:=.1`
+C318|-16–-15|\<label\>|\<label ending with `:`\>
 [C333](https://tug.org/pipermail/tex-k/2019-October/003055.html)|-14|`fi"`|`fi "`
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
