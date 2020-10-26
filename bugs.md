@@ -38,7 +38,6 @@ C292|-10|known *p* - *q*|known (*p* - *q*)
 C295|2|3.37|3.37218
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
-C341|-14|`text`|`\text`
 mf.web|§632, §720|control sequence|macro
 mf.web|§1096|**fontinfo**|**fontdimen**
 mf.web|§1106|`fontinfo`|`fontdimen`
@@ -200,6 +199,7 @@ C250|11|**endfor**|**fi**
 C279|1|`blacker:=.2`|`blacker:=.1`
 C318|-16–-15|\<label\>|\<label ending with `:`\>
 [C333](https://tug.org/pipermail/tex-k/2019-October/003055.html)|-14|`fi"`|`fi "`
+C341|-14|`text`|`\text`
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
 
