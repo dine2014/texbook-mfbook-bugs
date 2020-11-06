@@ -15,7 +15,6 @@ A423|16|`width0pt }`|`width0pt\relax}`
 C68|9|`-36.16279`|[that value can't be printed]
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
-C136|18|0.28|0.27614
 C180|-3|‘=’|‘=’ or ‘:=’
 C187|-11|\<pair primary\>|\<pair expression\>
 C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
@@ -36,7 +35,6 @@ C289|20|`{{pair x cand x>(0,0)}}`|`{{(pair x) cand x>(0,0)}}`
 C291|18|`setu_ u`|`save u_; setu_ u`
 C292|-10|known *p* - *q*|known (*p* - *q*)
 C293|-14–-13|When *c* → 0, the quantity *a*<sup>3</sup> + *b*<sup>3</sup> approaches −∞ when *c* is negative, +∞ when *c* is positive.|When *c* → 0, the quantity *a*<sup>3</sup> + *b*<sup>3</sup> approaches +∞ when *c* is negative, −∞ when *c* is positive.
-C295|2|3.37|3.37218
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
 mf.web|§632, §720|control sequence|macro
@@ -89,7 +87,6 @@ C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
 C46|15|`\mode=smoke`; `input badio`|`\mode=smoke; input badio`
 C50|27|`10000`?|`10000`.
-C69|11|cosd 90°|cos 90°
 C80|14|**penpos**|*penpos*
 C97|10|E [logo10]|E [logo9]
 C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
