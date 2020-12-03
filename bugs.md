@@ -1,5 +1,11 @@
 This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. All of them were found in 2020 and reported to karl or tex-k, but of course I do not claim to be the first finder of them. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
 
+## Bug found after the deadline
+
+File | Section | Typo | Correction
+-----|---------|------|-----------
+tex.web|§208|( `\kern`)|( `\kern` ) 
+
 ## Technical errors
 
 Page | Line | Typo | Correction
