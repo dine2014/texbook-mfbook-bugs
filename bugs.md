@@ -1,4 +1,4 @@
-This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. All of them were found in 2020 and reported to karl or tex-k, but of course I do not claim to be the first finder of them. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
+This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
 
 ## Bug found after the deadline
 
@@ -6,7 +6,9 @@ File | Section | Typo | Correction
 -----|---------|------|-----------
 tex.web|§208|( `\kern`)|( `\kern` ) 
 
-## Technical errors
+## Bugs found before the deadline (and reported)
+
+### Technical errors
 
 Page | Line | Typo | Correction
 -----|------|------|-----------
@@ -43,6 +45,9 @@ C292|-10|known *p* - *q*|known (*p* - *q*)
 C293|-14–-13|When *c* → 0, the quantity *a*<sup>3</sup> + *b*<sup>3</sup> approaches −∞ when *c* is negative, +∞ when *c* is positive.|When *c* → 0, the quantity *a*<sup>3</sup> + *b*<sup>3</sup> approaches +∞ when *c* is negative, −∞ when *c* is positive.
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
+
+File | Section | Typo | Correction
+-----|---------|------|-----------
 mf.web|§632, §720|control sequence|macro
 mf.web|§1096|**fontinfo**|**fontdimen**
 mf.web|§1106|`fontinfo`|`fontdimen`
@@ -78,7 +83,7 @@ The program on page C299 has three problems: (1) It doesn't work with *flex* due
 
 is faster, but it doesn't work for *t* ≈ 1!)
 
-## Typographical errors
+### Typographical errors
 
 Page | Line | Typo | Correction
 -----|------|------|-----------
@@ -148,6 +153,9 @@ C319|25|“spacefactor”|“space factor”
 C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
 C324|7|[65.3]|`[65.3]`
 C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ’, and ‘ø’
+
+File | Section | Typo | Correction
+-----|---------|------|-----------
 mf.web|§107|((2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)|(2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
@@ -188,7 +196,7 @@ General issues:
 - space factor not turned off after code fragments (e.g. “and ‘?’&nbsp;&nbsp;is restored” on page C247, lines -6)
 - *The TeXbook* uses thrice "his or her", and *TeX: The Program* uses twice "he or she", which are no longer gender-inclusive
 
-## Other people's bug reports I'm aware of
+### Other people's bug reports I'm aware of
 
 Page | Line | Typo | Correction
 -----|------|------|------------
@@ -204,10 +212,13 @@ C279|1|`blacker:=.2`|`blacker:=.1`
 C318|-16–-15|\<label\>|\<label ending with `:`\>
 [C333](https://tug.org/pipermail/tex-k/2019-October/003055.html)|-14|`fi"`|`fi "`
 C341|-14|`text`|`\text`
+
+File | Section | Typo | Correction
+-----|---------|------|-----------
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
 
-## Bug that won't be fixed
+### Bug that won't be fixed
 
 Page A415, lines 24–25: change
 ```
