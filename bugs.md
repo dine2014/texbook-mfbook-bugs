@@ -2,6 +2,11 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 
 ## Bug found after the deadline
 
+Page | Line | Typo | Correction
+-----|------|------|-----------
+C130|26|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1}&{curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1} & {curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle
+C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r shifted .5up -- cycle`
+
 File | Section | Typo | Correction
 -----|---------|------|-----------
 tex.web|§208|( `\kern`)|( `\kern` ) 
