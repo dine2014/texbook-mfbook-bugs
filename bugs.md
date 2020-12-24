@@ -10,7 +10,8 @@ C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r s
 File | Section | Typo | Correction
 -----|---------|------|-----------
 tex.web|§208|( `\kern`)|( `\kern` )
-tex.web<br>mf.web|§307<br>§632|‘to be read again’.|‘to be read again’;
+tex.web|§307|‘to be read again’.|‘to be read again’;
+mf.web|§632|‘to be read again’.|‘to be read again’;
 
 ## Bugs found before the deadline (and reported)
 
