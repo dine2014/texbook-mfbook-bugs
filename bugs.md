@@ -1,6 +1,6 @@
 This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
 
-## Bug found after the deadline
+## Bugs found after the deadline
 
 Page | Line | Typo | Correction
 -----|------|------|-----------
@@ -9,7 +9,8 @@ C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r s
 
 File | Section | Typo | Correction
 -----|---------|------|-----------
-tex.web|§208|( `\kern`)|( `\kern` ) 
+tex.web|§208|( `\kern`)|( `\kern` )
+tex.web<br>mf.web|§307<br>§632|‘to be read again’.|‘to be read again’;
 
 ## Bugs found before the deadline (and reported)
 
