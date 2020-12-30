@@ -12,6 +12,7 @@ File | Section | Typo | Correction
 -----|---------|------|-----------
 tex.web|§208|( `\kern`)|( `\kern` )
 tex.web|§307|‘to be read again’.|‘to be read again’;
+tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
 ## Bugs found before the deadline (and reported)
