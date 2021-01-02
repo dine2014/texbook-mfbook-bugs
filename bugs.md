@@ -15,6 +15,8 @@ tex.web|§307|‘to be read again’.|‘to be read again’;
 tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
+Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually quite different from *p* .. *q* .. *r*. But I think this is a white lie.
+
 ## Bugs found before the deadline (and reported)
 
 ### Technical errors
