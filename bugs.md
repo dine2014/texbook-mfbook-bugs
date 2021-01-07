@@ -2,14 +2,14 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 
 ## Bugs found after the deadline
 
-Page | Line | Typo | Correction
------|------|------|-----------
+Page | Line | Bug | Fix
+-----|------|-----|----
 A252|6|redefining the control sequences|changing [the token lists]
 C130|26|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1}&{curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1} & {curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle
 C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r shifted .5up -- cycle`
 
-File | Section | Typo | Correction
------|---------|------|-----------
+File | Section | Bug | Fix
+-----|---------|-----|----
 tex.web|§208|( `\kern`)|( `\kern` )
 tex.web|§307|‘to be read again’.|‘to be read again’;
 tex.web|§1062|\<`hlist`\>|\<hlist\>
@@ -21,8 +21,8 @@ Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-as
 
 ### Technical errors
 
-Page | Line | Typo | Correction
------|------|------|-----------
+Page | Line | Bug | Fix
+-----|------|-----|----
 A215|26|`$`<sub>3</sub>|math shift
 A305|-1|`-\wd0}`|`-\wd0 }`
 A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
@@ -57,8 +57,8 @@ C293|-14–-13|When *c* → 0, the quantity *a*<sup>3</sup> + *b*<sup>3</sup> ap
 C305|14|`serif_fit`|`serif_fit#`
 C305|15|`letter_fit`|`letter_fit#`
 
-File | Section | Typo | Correction
------|---------|------|-----------
+File | Section | Bug | Fix
+-----|---------|-----|----
 mf.web|§632, §720|control sequence|macro
 mf.web|§1096|**fontinfo**|**fontdimen**
 mf.web|§1106|`fontinfo`|`fontdimen`
@@ -96,8 +96,8 @@ is faster, but it doesn't work for *t* ≈ 1!)
 
 ### Typographical errors
 
-Page | Line | Typo | Correction
------|------|------|-----------
+Page | Line | Bug | Fix
+-----|------|-----|----
 A51|19|<code>``</code> yields“|<code>``</code> yields “
 A164|-14|Exercise 17.20|exercise 17.20
 A226|-7|filename|file name
@@ -165,8 +165,8 @@ C324|16|`[`*c.x*`]`|`[`*c*`.`*x*`]`
 C324|7|[65.3]|`[65.3]`
 C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ’, and ‘ø’
 
-File | Section | Typo | Correction
------|---------|------|-----------
+File | Section | Bug | Fix
+-----|---------|-----|----
 mf.web|§107|((2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)|(2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
@@ -174,8 +174,8 @@ mf.web|§798|node .|node.
 
 Bugs in Appendix I of *The METAFONTbook* are too numerous to list exhausively, but here are the serious ones.
 
-Entry | Correction
-------|-----------
+Entry | Fix
+------|----
 Boolean expressions, ….|boolean expressions, ….
 \<declaration\>, 56, **171**.|\<declaration\>, **56**, 171.
 \*`directiontime`, …, *295*.|\*`directiontime`, …, *298*.
@@ -209,8 +209,8 @@ General issues:
 
 ### Other people's bug reports I'm aware of
 
-Page | Line | Typo | Correction
------|------|------|------------
+Page | Line | Bug | Fix
+-----|------|-----|-----
 C22|10|**draw** *z*<sub>1</sub>; **draw** *z*<sub>2</sub>|**draw** *z*<sub>1</sub>;&nbsp;&nbsp;**draw** *z*<sub>2</sub>
 C68|-13|`(x+0.16667y,y)`|`(0.16667y+x,y)`
 C114|23|**of**|of
@@ -224,8 +224,8 @@ C318|-16–-15|\<label\>|\<label ending with `:`\>
 [C333](https://tug.org/pipermail/tex-k/2019-October/003055.html)|-14|`fi"`|`fi "`
 C341|-14|`text`|`\text`
 
-File | Section | Typo | Correction
------|---------|------|-----------
+File | Section | Bug | Fix
+-----|---------|-----|----
 mf.web|§323|the the log *n* factor|the log *n* factor
 mf.web|§534|to to vertex *r*|to vertex *r*
 
