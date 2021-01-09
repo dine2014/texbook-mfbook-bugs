@@ -15,7 +15,11 @@ tex.web|§307|‘to be read again’.|‘to be read again’;
 tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
+Page 47 of *The TeXbook* implies that characters of category 13 are converted to tokens “by attaching the category code”, but in fact active characters are converted to a special kind of control sequences. They don't work in, for example, `\csname...\endcsname` even if they're made unexpandable.
+
 Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually quite different from *p* .. *q* .. *r*. But I think this is a white lie.
+
+lib/waits.mf begins with the funny commands `let <= = <=; let <> = <>; let >= = >=; let := = :=;`. They should probably be `let ≤ = <=; let ≠ = <>; let ≥ = >=; let ← = :=;`.
 
 ## Bugs found before the deadline (and reported)
 
@@ -35,9 +39,9 @@ C68|9|`-36.16279`|[that value can't be printed]
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C180|-3|‘=’|‘=’ or ‘:=’
-C187|-11|\<pair primary\>|\<pair expression\>
+C187|-11|`substring` \<pair primary\> `of` \<string primary\>|`substring` \<pair expression\> `of` \<string primary\>
 C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
-C214|-6|\<pair primary\>|\<pair expression\>
+C214|-6|`substring` \<pair primary\> `of` \<string primary\>|`substring` \<pair expression\> `of` \<string primary\>
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
 C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
