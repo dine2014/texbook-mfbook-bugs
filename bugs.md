@@ -19,7 +19,7 @@ Page 47 of *The TeXbook* implies that characters of category 13 are converted to
 
 Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually quite different from *p* .. *q* .. *r*. But I think this is a white lie.
 
-lib/waits.mf begins with the funny commands `let <= = <=; let <> = <>; let >= = >=; let := = :=;`. They should probably be `let ≤ = <=; let ≠ = <>; let ≥ = >=; let ← = :=;`.
+`lib/waits.mf` begins with the funny commands `let <= = <=; let <> = <>; let >= = >=; let := = :=;`. They should probably be `let ≤ = <=; let ≠ = <>; let ≥ = >=; let ← = :=;`.
 
 ## Bugs found before the deadline (and reported)
 
@@ -39,9 +39,9 @@ C68|9|`-36.16279`|[that value can't be printed]
 C83|16|`-0.5b-c+1.5`|`-c-0.5b+1.5`
 C83|19|0.75*b* + 0.5*c* + 0.75|0.5*c* + 0.75*b* + 0.75
 C180|-3|‘=’|‘=’ or ‘:=’
-C187|-11|`substring` \<pair primary\> `of` \<string primary\>|`substring` \<pair expression\> `of` \<string primary\>
+C187|-11|\<pair primary\>|\<pair expression\>
 C214|6|\<future pen primary\> → `pencircle`|\<future pen primary\> → \<future pen argument\><br>&nbsp;&nbsp;&nbsp;&nbsp;\| `pencircle`
-C214|-6|`substring` \<pair primary\> `of` \<string primary\>|`substring` \<pair expression\> `of` \<string primary\>
+C214|-6|\<pair primary\>|\<pair expression\>
 C224|9|<code>&lt;insert&gt;&nbsp;&nbsp;mode_setup</code>|<code>&lt;insert&gt;&nbsp;&nbsp;&nbsp;mode_setup</code>
 C243|16|**begingroup**|**begingroup** **save** *region*;
 C243|25|**beginchar**(*M*, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);|**beginchar**(`"M"`, 1.25*in*<sup>#</sup>, .5*in*<sup>#</sup>, 0);
@@ -255,4 +255,4 @@ to
 \def\ninebig#1{{\vcenter{\hbox{$\textfont0=\tenrm\textfont2=\tensy
   \left#1\vbox to7.25pt{}\right.\n@space$}}}}
 ```
-otherwise formulas like `$\bigl[ [] \bigr]$` will be vertically asymmetrical in nine-point territory. (See page C298, line -1 for an example of this vertical asymmetry.)
+otherwise `\big` delimiters in nine-point formulas won't be vertically centered. (See page C298, line -1 for an example of this vertical asymmetry.)
