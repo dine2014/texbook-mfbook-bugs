@@ -75,7 +75,7 @@ and move the alternatives that begin with an operator to the definition of \<num
 
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't work with **show** when *n_* ≥ 3, since the Bernstein polynomial is calculated implicitly in the private array *u_*:
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't always give explicit results with **show** when *n_* ≥ 3:
 ```
 *show 2[a,b,c,d];
 >> u_1
@@ -85,7 +85,7 @@ c = 0.25u_1-1.5u_2+2u_3+0.25a
 b = 0.5u_1-2u_2+2u_3+0.5a
 u_4 = 0.125u_1-0.75u_2+1.5u_3+0.125a
 ```
-The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can change *u_* from an array to a list macro:
+The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can build the Bernshtein polynomial explicitly from `+` and `*`:
 > **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
 > **let** [[[ = [; **let** ]]] = ]; **let** [ = *lbrack*;<br>
 > **def** *lookahead*(**text** *t*) =<br>
@@ -100,7 +100,7 @@ The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to
 > &nbsp;&nbsp;**endfor** *c_*[[[1]]] := (1 - *t*) \* *c_*[[[1]]]; **endfor**<br>
 > &nbsp;*nn_* := 0; **for** *u* = *uu_*: + *c_*[[[incr *nn_*]]] \* *u* **endfor** **endgroup** **enddef**;
 
-Henceforth ‘**show** 2[*a*, *b*, *c*, *d*]’ will give ‘8*d* - 12*c* + 6*b* - *a*’ and everyone will be happy. (*nn_* and *uu_* are the new names of *n_* and *u_* to avoid name conflict. The alternative definition of ‘Bernshtein’,
+(*nn_* and *uu_* are the new names of *n_* and *u_* to avoid name conflict. The alternative definition of ‘Bernshtein’,
 > **primarydef** *t* Bernshtein *nn* = **begingroup** *nn_* := 0; *f_* := *t*/(1 - *t*);<br>
 > &nbsp;**def** *next_* = *co_* := takepower *nn* - 1 of (1 - *t*);<br>
 > &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* (*nn* - incr *nn_*) \* *f_* / *nn_* **enddef** **enddef**;<br>
