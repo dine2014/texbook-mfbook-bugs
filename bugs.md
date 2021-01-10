@@ -5,6 +5,7 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 Page | Line | Bug | Fix
 -----|------|-----|----
 A252|6|redefining the control sequences|changing [the token lists]
+A350|30|he really wants|they really want
 C130|26|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1}&{curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1} & {curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle
 C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r shifted .5up -- cycle`
 
