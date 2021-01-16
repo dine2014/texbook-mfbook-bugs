@@ -5,6 +5,7 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 Page | Line | Bug | Fix
 -----|------|-----|----
 A252|6|redefining the control sequences|changing [the token lists]
+A373|22|Chapter 24|Chapters 24–26
 A350|30|he really wants|they really want
 C130|26|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1}&{curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1} & {curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle
 C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r shifted .5up -- cycle`
@@ -16,7 +17,7 @@ tex.web|§307|‘to be read again’.|‘to be read again’;
 tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
-Page 47 of *The TeXbook* implies that characters of category 13 are converted to tokens “by attaching the category code”, but in fact active characters are converted to a special kind of control sequences. They don't work in, for example, `\csname...\endcsname` even if they're made unexpandable.
+Page 47 of *The TeXbook* implies that characters of category 13 are converted to tokens “by attaching the category code”, but in fact active characters are converted to a special kind of control sequences. They're not allowed in, for example, `\csname...\endcsname` even if they're made unexpandable.
 
 Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually quite different from *p* .. *q* .. *r*. But I think this is a white lie.
 
@@ -86,7 +87,7 @@ c = 0.25u_1-1.5u_2+2u_3+0.25a
 b = 0.5u_1-2u_2+2u_3+0.5a
 u_4 = 0.125u_1-0.75u_2+1.5u_3+0.125a
 ```
-The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can build the Bernshtein polynomial explicitly from `+` and `*`:
+The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can build the Bernshtein polynomial as a single expression:
 > **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
 > **let** [[[ = [; **let** ]]] = ]; **let** [ = *lbrack*;<br>
 > **def** *lookahead*(**text** *t*) =<br>
@@ -256,4 +257,4 @@ to
 \def\ninebig#1{{\vcenter{\hbox{$\textfont0=\tenrm\textfont2=\tensy
   \left#1\vbox to7.25pt{}\right.\n@space$}}}}
 ```
-otherwise `\big` delimiters in nine-point formulas won't be vertically centered. (See page C298, line -1 for an example of this vertical asymmetry.)
+otherwise `\big` delimiters in nine-point formulas won't be vertically centered. (See page C298, line -1, or run the input `\input manmac \ninepoint $\bigl[ []\bigr]$ \end`, for an example of this vertical asymmetry.)
