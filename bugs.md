@@ -14,14 +14,13 @@ File | Section | Bug | Fix
 -----|---------|-----|----
 tex.web|§208|( `\kern`)|( `\kern` )
 tex.web|§307|‘to be read again’.|‘to be read again’;
+tex.web|§764|a 8 × 8 table|an 8 × 8 table
 tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
 Page 47 of *The TeXbook* implies that characters of category 13 are converted to tokens “by attaching the category code”, but in fact active characters are converted to a special kind of control sequences. They're not allowed in, for example, `\csname...\endcsname` even if they're made unexpandable.
 
-Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually quite different from *p* .. *q* .. *r*. But I think this is a white lie.
-
-`lib/waits.mf` begins with the funny commands `let <= = <=; let <> = <>; let >= = >=; let := = :=;`. They should probably be `let ≤ = <=; let ≠ = <>; let ≥ = >=; let ← = :=;`.
+Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually different from *p* .. *q* .. *r*. But I think this is a white lie.
 
 ## Bugs found before the deadline (and reported)
 
@@ -57,7 +56,7 @@ C257|7|`yoffset`|`boundarychar`
 C260|4|`headerbytes`|`headerbyte`
 C261|10|`makegrid(`\<pairs\>`)(`\<pairs\>`)`|`makegrid(`\<numerics\>`)(`\<numerics\>`)`
 C289|20|`{{pair x cand x>(0,0)}}`|`{{(pair x) cand x>(0,0)}}`
-C291|18|`setu_ u`|`save u_; setu_ u`
+C291|18|`setu_ u;`|`save u_; setu_ u;`
 C292|-10|known *p* - *q*|known (*p* - *q*)
 C293|-14–-13|When *c* → 0, the quantity *a*<sup>3</sup> + *b*<sup>3</sup> approaches −∞ when *c* is negative, +∞ when *c* is positive.|When *c* → 0, the quantity *a*<sup>3</sup> + *b*<sup>3</sup> approaches +∞ when *c* is negative, −∞ when *c* is positive.
 C305|14|`serif_fit`|`serif_fit#`
@@ -257,4 +256,4 @@ to
 \def\ninebig#1{{\vcenter{\hbox{$\textfont0=\tenrm\textfont2=\tensy
   \left#1\vbox to7.25pt{}\right.\n@space$}}}}
 ```
-otherwise `\big` delimiters in nine-point formulas won't be vertically centered. (See page C298, line -1, or run the input `\input manmac \ninepoint $\bigl[ []\bigr]$ \end`, for an example of this vertical asymmetry.)
+otherwise `\big` delimiters in nine-point formulas won't be vertically centered. (See page C298, line -1, or run the input `\input manmac \ninepoint $\bigl[ [] \bigr]$ \end`, for an example of this vertical asymmetry.)
