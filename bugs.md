@@ -22,6 +22,21 @@ Page 47 of *The TeXbook* implies that characters of category 13 are converted to
 
 Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually different from *p* .. *q* .. *r*. But I think this is a white lie.
 
+The program on page 299 of *The METAFONTbook* can be made to work with `]]` (a plain METAFONT macro that expands to `] ]`) by changing `[` and `]` from delimiters to macros:
+
+> **let** [[[ = [; **let** ]]] = ];<br>
+> **def** [ = **exitif** **numeric** **begingroup** **for** *u* = **enddef**;<br>
+> **def** ] = , *hide*(*N_* := 0; **let** *v_* = \\):<br>
+> &nbsp;**if** *incr* *N_* = 1: **def** *v_* = *u* **enddef**<br>
+> &nbsp;**else**: **expandafter** **def** **expandafter** *v_* **expandafter** = *v_*, *u* **enddef**<br>
+> &nbsp;**fi**; **endfor** **endgroup**; **if** *N_* < 3: [[[*v_*]]] **else**: Bernshtein *N_* **fi**<br>
+> &nbsp;**enddef**;<br>
+> **primarydef** *t* Bernshtein *nn* = **begingroup** *N_*[[[1]]] := 1;<br>
+> &nbsp;**for** *n* = 1 **upto** *nn* - 1: *N_*[[[*n* + 1]]] := *t* \* *N_*[[[*n*]]];<br>
+> &nbsp;&nbsp;**for** *k* = *n* **downto** 2: *N_*[[[*k*]]] := *t*[[[*N_*[[[*k*]]], *N_*[[[*k* - 1]]] ]]];<br>
+> &nbsp;&nbsp;**endfor** *N_*[[[1]]] := (1 - *t*) \* *N_*[[[1]]]; **endfor**<br>
+> &nbsp;*N_* := 0; **for** *u* = *v_*: + *N_*[[[incr *N_*]]] \* *u* **endfor** **endgroup** **enddef**;
+
 ## Bugs found before the deadline (and reported)
 
 ### Technical errors
