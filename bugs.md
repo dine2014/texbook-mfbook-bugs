@@ -18,7 +18,7 @@ tex.web|§764|a 8 × 8 table|an 8 × 8 table
 tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
-Page 47 of *The TeXbook* implies that characters of category 13 are converted to tokens “by attaching the category code”, but in fact active characters are converted to a special kind of control sequences. They're not allowed in, for example, `\csname...\endcsname` even if they're made unexpandable.
+Page 47 of *The TeXbook* implies that characters of category 13 are converted to tokens “by attaching the category code”, but in fact active characters are converted to a special kind of control sequences. After saying `\let~=\endcsname`, the `~` in `\csname foo~` finishes the `\csname` construction rather than contributing a `~` character to the control sequence name.
 
 Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually different from *p* .. *q* .. *r*. But I think this is a white lie.
 
