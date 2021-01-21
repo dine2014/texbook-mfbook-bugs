@@ -18,7 +18,7 @@ tex.web|§764|a 8 × 8 table|an 8 × 8 table
 tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
-Page 47 of *The TeXbook* implies that characters of category 13 are converted to tokens “by attaching the category code”, but [this is a white lie](https://tex.stackexchange.com/a/577952).
+*The TeXbook* leaves it unclear whether active characters are character tokens (e.g. page 47), control sequences (e.g. page 268, line -10), or a third kind of tokens (e.g. page 270, line 4).
 
 Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually different from *p* .. *q* .. *r*. But I think this is a white lie.
 
@@ -27,7 +27,7 @@ The program on page 299 of *The METAFONTbook* can be made to work with `]]` (a p
 > **let** [[[ = [; **let** ]]] = ];<br>
 > **def** [ = **exitif** **numeric** **begingroup** **for** *u* = **enddef**;<br>
 > **def** ] = , *hide*(*N_* := 0; **let** *v_* = \\):<br>
-> &nbsp;**if** *incr* *N_* = 1: **def** *v_* = *u* **enddef**<br>
+> &nbsp;**if** incr *N_* = 1: **def** *v_* = *u* **enddef**<br>
 > &nbsp;**else**: **expandafter** **def** **expandafter** *v_* **expandafter** = *v_*, *u* **enddef**<br>
 > &nbsp;**fi**; **endfor** **endgroup**; **if** *N_* < 3: [[[*v_*]]] **else**: Bernshtein *N_* **fi**<br>
 > &nbsp;**enddef**;<br>
