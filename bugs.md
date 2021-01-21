@@ -18,11 +18,9 @@ tex.web|§764|a 8 × 8 table|an 8 × 8 table
 tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§632|‘to be read again’.|‘to be read again’;
 
-*The TeXbook* leaves it unclear whether active characters are character tokens (e.g. page 47), control sequences (e.g. page 268, line -10), or a third kind of tokens (e.g. page 270, line 4).
-
 Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually different from *p* .. *q* .. *r*. But I think this is a white lie.
 
-The program on page 299 of *The METAFONTbook* can be made to work with `]]` (a plain METAFONT macro that expands to `] ]`) by changing `[` and `]` from delimiters to macros:
+The program on page 299 of *The METAFONTbook* can be made to work with `]]` (a token which plain METAFONT expands to `] ]`) by changing `[` and `]` from delimiters to macros:
 
 > **let** [[[ = [; **let** ]]] = ];<br>
 > **def** [ = **exitif** **numeric** **begingroup** **for** *u* = **enddef**;<br>
