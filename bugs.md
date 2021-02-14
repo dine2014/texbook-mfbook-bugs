@@ -1,47 +1,19 @@
 This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
 
-## Bugs found after the deadline
+## Bug for the 2029 tuneup
 
 Page | Line | Bug | Fix
 -----|------|-----|----
-A252|6|redefining the control sequences|changing [the token lists]
-A373|22|Chapter 24|Chapters 24–26
-A350|30|he really wants|they really want
-C130|26|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1}&{curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1} & {curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle
-C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r shifted .5up -- cycle`
+C210|-13–-12|an **expr** argument to a macro, where the value of the expression is of type **boolean**|a capsule containing a value of type **boolean**
 
-File | Section | Bug | Fix
------|---------|-----|----
-tex.web|§208|( `\kern`)|( `\kern` )
-tex.web|§307|‘to be read again’.|‘to be read again’;
-tex.web|§764|a 8 × 8 table|an 8 × 8 table
-tex.web|§1062|\<`hlist`\>|\<hlist\>
-mf.web|§632|‘to be read again’.|‘to be read again’;
-
-Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually different from *p* .. *q* .. *r*. But I think this is a white lie.
-
-The program on page 299 of *The METAFONTbook* can be made to work with `]]` (a token which plain METAFONT expands to `] ]`) by changing `[` and `]` from delimiters to macros:
-
-> **let** [[[ = [; **let** ]]] = ];<br>
-> **def** [ = **exitif** **numeric** **begingroup** **for** *u* = **enddef**;<br>
-> **def** ] = , *hide*(*N_* := 0; **let** *v_* = \\):<br>
-> &nbsp;**if** incr *N_* = 1: **def** *v_* = *u* **enddef**<br>
-> &nbsp;**else**: **expandafter** **def** **expandafter** *v_* **expandafter** = *v_*, *u* **enddef**<br>
-> &nbsp;**fi**; **endfor** **endgroup**; **if** *N_* < 3: [[[*v_*]]] **else**: Bernshtein *N_* **fi**<br>
-> &nbsp;**enddef**;<br>
-> **primarydef** *t* Bernshtein *nn* = **begingroup** *N_*[[[1]]] := 1;<br>
-> &nbsp;**for** *n* = 1 **upto** *nn* - 1: *N_*[[[*n* + 1]]] := *t* \* *N_*[[[*n*]]];<br>
-> &nbsp;&nbsp;**for** *k* = *n* **downto** 2: *N_*[[[*k*]]] := *t*[[[*N_*[[[*k*]]], *N_*[[[*k* - 1]]] ]]];<br>
-> &nbsp;&nbsp;**endfor** *N_*[[[1]]] := (1 - *t*) \* *N_*[[[1]]]; **endfor**<br>
-> &nbsp;*N_* := 0; **for** *u* = *v_*: + *N_*[[[incr *N_*]]] \* *u* **endfor** **endgroup** **enddef**;
-
-## Bugs found before the deadline (and reported)
+## Bugs for the 2021 tuneup
 
 ### Technical errors
 
 Page | Line | Bug | Fix
 -----|------|-----|----
 A215|26|`$`<sub>3</sub>|math shift
+A252|6|redefining the control sequences|changing [the token lists]
 A305|-1|`-\wd0}`|`-\wd0 }`
 A341|-2|`\parindent`. Turn|`\parindent`.&nbsp;&nbsp;Turn
 A342|12|three|five [`\␣` and `\char`]
@@ -87,6 +59,8 @@ Change the definition of \<numeric primary\> on pages C72 and C211 to
 
 and move the alternatives that begin with an operator to the definition of \<numeric atom\>. (This recursive approach ensures that expressions like 3 sqrt 3(9)[1, 2][3, 4][5, 6][7, 8] are properly handled.)
 
+Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-associative. In fact (*p* .. *q*) .. *r* is usually different from *p* .. *q* .. *r*. But I think this is a white lie.
+
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
 The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't always give explicit results with **show** when *n_* ≥ 3:
@@ -122,6 +96,21 @@ The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to
 
 is faster, but it doesn't work for *t* ≈ 1!)
 
+**2021 update**: The program on page 299 of *The METAFONTbook* can be made to work with `]]` (a token which plain METAFONT expands to `] ]`) by changing `[` and `]` from delimiters to macros:
+
+> **let** [[[ = [; **let** ]]] = ];<br>
+> **def** [ = **exitif** **numeric** **begingroup** **for** *u* = **enddef**;<br>
+> **def** ] = , *hide*(*N_* := 0; **let** *v_* = \\):<br>
+> &nbsp;**if** incr *N_* = 1: **def** *v_* = *u* **enddef**<br>
+> &nbsp;**else**: **expandafter** **def** **expandafter** *v_* **expandafter** = *v_*, *u* **enddef**<br>
+> &nbsp;**fi**; **endfor** **endgroup**; **if** *N_* < 3: [[[*v_*]]] **else**: Bernshtein *N_* **fi**<br>
+> &nbsp;**enddef**;<br>
+> **primarydef** *t* Bernshtein *nn* = **begingroup** *N_*[[[1]]] := 1;<br>
+> &nbsp;**for** *n* = 1 **upto** *nn* - 1: *N_*[[[*n* + 1]]] := *t* \* *N_*[[[*n*]]];<br>
+> &nbsp;&nbsp;**for** *k* = *n* **downto** 2: *N_*[[[*k*]]] := *t*[[[*N_*[[[*k*]]], *N_*[[[*k* - 1]]] ]]];<br>
+> &nbsp;&nbsp;**endfor** *N_*[[[1]]] := (1 - *t*) \* *N_*[[[1]]]; **endfor**<br>
+> &nbsp;*N_* := 0; **for** *u* = *v_*: + *N_*[[[incr *N_*]]] \* *u* **endfor** **endgroup** **enddef**;
+
 ### Typographical errors
 
 Page | Line | Bug | Fix
@@ -131,7 +120,9 @@ A164|-14|Exercise 17.20|exercise 17.20
 A226|-7|filename|file name
 A248|2|36em|36 em
 A280|3, 6, 21|\<filename\>|\<file name\>
+A350|30|he really wants|they really want
 A368|8|'*40*=`SP`|'*40* = `SP`
+A373|22|Chapter 24|Chapters 24–26
 Cx|-4|More about Macros|More About Macros
 C23|-9, -7|*ss* [math italic]|*ss* [text italic]
 C28|12|*down* [math italic]|*down* [text italic]
@@ -141,6 +132,7 @@ C80|14|**penpos**|*penpos*
 C97|10|E [logo10]|E [logo9]
 C115|19|*currentpicture*:=**nullpicture**|*currentpicture* := **nullpicture**
 C116|8|**hide**|*hide*
+C130|26|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1}&{curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle|*z*<sub>0</sub> .. *z*<sub>1</sub>{curl 1} & {curl 1}*z*<sub>1</sub> .. *z*<sub>2</sub> .. cycle
 C134|-4|*heart* [math italic]|*heart* [text italic]
 C143|1|‘hide’|“hide”
 C145|-5|*METAFONT* [logosl10]|*METAFONT* [logosl9]
@@ -186,6 +178,7 @@ C287|-3|expandafters|**expandafter**s
 C288|-13, -6|Boolean|boolean
 C290|8|*dx* [math italic]|*dx* [text italic]
 C293|24|solve|*solve*
+C298|13, -10|`--subpath(t,T) of r shifted .5up -- cycle`|`-- subpath(t,T) of r shifted .5up -- cycle`
 C298|18–20|**tensepath**|*tensepath*
 C307|-2|ad-hoc dimension|ad hoc dimension
 C319|25|“spacefactor”|“space factor”
@@ -195,7 +188,12 @@ C339|3|‘ß’, ‘æ’, ‘œ’, and &nbsp;ø’|‘ß’, ‘æ’, ‘œ�
 
 File | Section | Bug | Fix
 -----|---------|-----|----
+tex.web|§208|( `\kern`)|( `\kern` )
+tex.web|§307|‘to be read again’.|‘to be read again’;
+tex.web|§764|a 8 × 8 table|an 8 × 8 table
+tex.web|§1062|\<`hlist`\>|\<hlist\>
 mf.web|§107|((2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)|(2<sup>29</sup> \* *p* + *q*) **div** (2 \* *q*)
+mf.web|§632|‘to be read again’.|‘to be read again’;
 mf.web|§757|he|they [or rewrite the sentence]
 mf.web|§798|a the|the
 mf.web|§798|node .|node.
