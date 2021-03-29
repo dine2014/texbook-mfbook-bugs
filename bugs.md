@@ -4,7 +4,9 @@ This is a list of bugs I found (so far) in the documentation of TeX and METAFONT
 
 Page | Line | Bug | Fix
 -----|------|-----|----
-C210|-13–-12|an **expr** argument to a macro, where the value of the expression is of type **boolean**|a capsule containing a value of type **boolean**
+A158|-12|˝28|˝29
+A213|-13|character tokens|non-active character tokens
+C210|-13–-12|an **expr** argument to a macro|a capsule
 
 ## Bugs for the 2021 tuneup
 
