@@ -1,12 +1,24 @@
 This is a list of bugs I found (so far) in the documentation of TeX and METAFONT. In the page numbers, "A" stands for _The TeXbook_ and "C" stands for _The METAFONTbook_.
 
-## Bug for the 2029 tuneup
+## Bugs for the 2029 tuneup
 
 Page | Line | Bug | Fix
 -----|------|-----|----
 A158|-12|˝28|˝29
 A213|-13|character tokens|non-active character tokens
-C210|-13–-12|an **expr** argument to a macro|a capsule
+A274|4|overfull boxes|overfull hboxes
+A213|-13|character tokens|non-active character tokens
+C72|17|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
+C210|-13, -12|**expr** argument to a macro|argument to a macro, loop, etc. [any capsule, actually] 
+C211|9|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
+
+File | Section | Bug | Fix
+-----|---------|-----|----
+mf.web|101|0.250000|0.25000
+mf.web|107|(2<sup>29</sup>∗_p_+_q_ ) **div**(2∗_q_)|(2<sup>29</sup>∗_p_+_q_)**div**(2∗_q_)
+mf.web|289|, [in the denominator]|, [after the fraction]
+
+In addition to the typos listed above, _The TeXbook_ and _The METAFONTbook_ [use the terms “eye”, “mouth”, and “gullet” inconsistently](https://tug.org/pipermail/tex-k/2021-April/003531.html). Also, the description of `\if` and `\ifcat` on page A209 [is not very correct](https://tug.org/pipermail/tex-k/2021-March/003470.html). The truth is that after two unexpandable tokens are found, TeX replaces them by their current *meaning*. Then control sequences have (character code, category code) = (256, 0) and active characters have category code 13.
 
 ## Bugs for the 2021 tuneup
 
