@@ -7,7 +7,6 @@ Page | Line | Bug | Fix
 A158|-12|˝28|˝29
 A213|-13|character tokens|non-active character tokens
 A274|4|overfull boxes|overfull hboxes
-A213|-13|character tokens|non-active character tokens
 C72|17|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
 C210|-13, -12|**expr** argument to a macro|argument to a macro, loop, etc. [any capsule, actually] 
 C211|9|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
