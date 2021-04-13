@@ -17,7 +17,7 @@ mf.web|101|0.250000|0.25000
 mf.web|107|(2<sup>29</sup>\*_p_+_q_ ) **div**(2\*_q_)|(2<sup>29</sup>\*_p_+_q_)**div**(2\*_q_)
 mf.web|289|, [in the denominator]|, [after the fraction]
 
-In addition to the typos listed above, _The TeXbook_ and _The METAFONTbook_ [use the terms “eye”, “mouth”, and “gullet” inconsistently](https://tug.org/pipermail/tex-k/2021-April/003531.html). Also, the description of `\if` and `\ifcat` on page A209 [is not very correct](https://tug.org/pipermail/tex-k/2021-March/003470.html). The truth is that after two unexpandable tokens are found, TeX replaces them by their current *meaning*. Then control sequences have (character code, category code) = (256, 0) except for `\noexpand`\<active character\>-produced `\relax`, which has category code 13.
+In addition to the typos listed above, _The TeXbook_ and _The METAFONTbook_ [use the terms “eye”, “mouth”, and “gullet” inconsistently](https://tug.org/pipermail/tex-k/2021-April/003531.html). Also, the description of `\if` and `\ifcat` on page A209 [is not very correct](https://tug.org/pipermail/tex-k/2021-March/003470.html). The truth is that after two unexpandable tokens are found, TeX replaces them by their current *meaning*. Then control sequences have (character code, category code) = (256, 0), except that `\relax` produced by `\noexpand`\<active character\> are reverted to the active character itself, which has category code 13.
 
 ## Bugs for the 2021 tuneup
 
