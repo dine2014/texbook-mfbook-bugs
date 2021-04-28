@@ -7,9 +7,8 @@ Page | Line | Bug | Fix
 A158|-12|˝28|˝29
 A213|-13|character tokens|non-active character tokens
 A274|4|overfull boxes|overfull hboxes
-C72|17|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
+C72/C211|17/9|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
 C210|-13, -12|**expr** argument to a macro|argument to a macro, loop, etc. [any capsule, actually] 
-C211|9|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
 C296|14|`fill`|`addto currentpicture contour` ([details](https://tug.org/pipermail/tex-k/2021-April/003541.html))
 
 File | Section | Bug | Fix
@@ -78,7 +77,7 @@ Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-as
 
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. Solution: rename it to *N_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. Solution: change ‘**if** *N_* < 3: [[[*t*]]]’ to ‘**if** *N_* = 0: [[[]]] **elseif** *N_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *N_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. (3) See my article “Improvements to the generalized mediation macros in _The METAFONTbook_”, to appear in TUGboat 42:1.
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. Solution: rename it to *N_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *N_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. Solution: change ‘**if** *N_* < 3: [[[*t*]]]’ to ‘**if** *N_* = 0: [[[]]] **elseif** *N_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *N_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. (3) See my article “Improvements to the generalized mediation macros in _The METAFONTbook_”, to appear in TUGboat 42:1.
 
 ### Typographical errors
 
