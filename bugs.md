@@ -10,12 +10,14 @@ A274|4|overfull boxes|overfull hboxes
 C72|17|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
 C210|-13, -12|**expr** argument to a macro|argument to a macro, loop, etc. [any capsule, actually] 
 C211|9|\<numeric atom not followed by `[` \<expression\> `,` \>|\<numeric atom not followed by ‘`[` \<expression\> `,`’ \>
+C296|14|`fill`|`addto currentpicture contour` ([details](https://tug.org/pipermail/tex-k/2021-April/003541.html))
 
 File | Section | Bug | Fix
 -----|---------|-----|----
 mf.web|101|0.250000|0.25000
 mf.web|107|(2<sup>29</sup>\*_p_+_q_ ) **div**(2\*_q_)|(2<sup>29</sup>\*_p_+_q_)**div**(2\*_q_)
 mf.web|289|, [in the denominator]|, [after the fraction]
+gftodvi.web|160|`"/"` .. .`"8"`|`"/"` .. `"8"`
 
 In addition to the typos listed above, _The TeXbook_ and _The METAFONTbook_ [use the terms “eye”, “mouth”, and “gullet” inconsistently](https://tug.org/pipermail/tex-k/2021-April/003531.html). Also, the description of `\if` and `\ifcat` on page A209 [is not very correct](https://tug.org/pipermail/tex-k/2021-March/003470.html). The truth is that after two unexpandable tokens are found, TeX replaces them by their current *meaning*. Then control sequences have (character code, category code) = (256, 0), except that `\relax` produced by `\noexpand`\<active character\> are reverted to the active character itself, which has category code 13.
 
@@ -76,53 +78,7 @@ Exercise 8.1 of *The METAFONTbook* assumes that the ‘..’ operator is left-as
 
 Exercise 15.7 in *The METAFONTbook*: To make the program on page C144 work with nonsquare pixels, simply changing line 10 is not enough. Line 11 should also take *aspect_ratio* into account, either by using a plain METAFONT command (like line 10), or by doing the *aspect_ratio* adjustment manually, e.g. ‘**addto** *currentpicture* **also** *currentpicture* rotatedaround((.5*w*,.5*h*) yscaled *aspect_ratio*, -180)’.
 
-The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. (3) It doesn't always give explicit results with **show** when *n_* ≥ 3:
-```
-*show 2[a,b,c,d];
->> u_1
-*showdependencies;
-d = 0.125u_1-0.75u_2+1.5u_3+0.125a
-c = 0.25u_1-1.5u_2+2u_3+0.25a
-b = 0.5u_1-2u_2+2u_3+0.5a
-u_4 = 0.125u_1-0.75u_2+1.5u_3+0.125a
-```
-The second problem can be solved by changing ‘**if** *n_* < 3: [[[*t*]]]’ to ‘**if** *n_* = 0: [[[]]] **elseif** *n_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *n_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. To solve the third problem, you can build the Bernshtein polynomial as a single expression:
-> **def** *lbrack* = *hide*(**delimiters** []) *lookahead* [ **enddef**;<br>
-> **let** [[[ = [; **let** ]]] = ]; **let** [ = *lbrack*;<br>
-> **def** *lookahead*(**text** *t*) =<br>
-> &nbsp;*hide*(**let** [ = *lbrack*;<br>
-> &nbsp;&nbsp;**for** *u* = *t*, *hide*(*nn_* := 0; **let** *uu_* = \\): **if** incr *nn_* = 1: **def** *uu_* = *u* **enddef**<br>
-> &nbsp;&nbsp;&nbsp;**else**: **expandafter** **def** **expandafter** *uu_* **expandafter** = *uu_*, *u* **enddef**<br>
-> &nbsp;&nbsp;**fi**; **endfor**)<br>
-> &nbsp;**if** *nn_* \< 3: [[[*uu_*]]] **else**: Bernshtein *nn_* **fi** **enddef**;<br>
-> **primarydef** *t* Bernshtein *nn* = **begingroup** *c_*[[[1]]] := 1;<br>
-> &nbsp;**for** *n* = 1 **upto** *nn* - 1: *c_*[[[*n* + 1]]] := *t* \* *c_*[[[*n*]]];<br>
-> &nbsp;&nbsp;**for** *k* = *n* **downto** 2: *c_*[[[*k*]]] := *t*[[[*c_*[[[*k*]]], *c_*[[[*k* - 1]]] ]]];<br>
-> &nbsp;&nbsp;**endfor** *c_*[[[1]]] := (1 - *t*) \* *c_*[[[1]]]; **endfor**<br>
-> &nbsp;*nn_* := 0; **for** *u* = *uu_*: + *c_*[[[incr *nn_*]]] \* *u* **endfor** **endgroup** **enddef**;
-
-(*nn_* and *uu_* are the new names of *n_* and *u_* to avoid name conflict. The alternative definition of ‘Bernshtein’,
-> **primarydef** *t* Bernshtein *nn* = **begingroup** *nn_* := 0; *f_* := *t*/(1 - *t*);<br>
-> &nbsp;**def** *next_* = *co_* := takepower *nn* - 1 of (1 - *t*);<br>
-> &nbsp;&nbsp;**def** *next_* = *co_* := *co_* \* (*nn* - incr *nn_*) \* *f_* / *nn_* **enddef** **enddef**;<br>
-> &nbsp;**for** *u* = *uu_*: + **begingroup** *next_*; *co_* **endgroup** \* *u* **endfor** **endgroup** **enddef**;
-
-is faster, but it doesn't work for *t* ≈ 1!)
-
-**2021 update**: The program on page 299 of *The METAFONTbook* can be made to work with `]]` (a token which plain METAFONT expands to `] ]`) by changing `[` and `]` from delimiters to macros:
-
-> **let** [[[ = [; **let** ]]] = ];<br>
-> **def** [ = **exitif** **numeric** **begingroup** **for** *u* = **enddef**;<br>
-> **def** ] = , *hide*(*N_* := 0; **let** *v_* = \\):<br>
-> &nbsp;**if** incr *N_* = 1: **def** *v_* = *u* **enddef**<br>
-> &nbsp;**else**: **expandafter** **def** **expandafter** *v_* **expandafter** = *v_*, *u* **enddef**<br>
-> &nbsp;**fi**; **endfor** **endgroup**; **if** *N_* < 3: [[[*v_*]]] **else**: Bernshtein *N_* **fi**<br>
-> &nbsp;**enddef**;<br>
-> **primarydef** *t* Bernshtein *nn* = **begingroup** *N_*[[[1]]] := 1;<br>
-> &nbsp;**for** *n* = 1 **upto** *nn* - 1: *N_*[[[*n* + 1]]] := *t* \* *N_*[[[*n*]]];<br>
-> &nbsp;&nbsp;**for** *k* = *n* **downto** 2: *N_*[[[*k*]]] := *t*[[[*N_*[[[*k*]]], *N_*[[[*k* - 1]]] ]]];<br>
-> &nbsp;&nbsp;**endfor** *N_*[[[1]]] := (1 - *t*) \* *N_*[[[1]]]; **endfor**<br>
-> &nbsp;*N_* := 0; **for** *u* = *v_*: + *N_*[[[incr *N_*]]] \* *u* **endfor** **endgroup** **enddef**;
+The program on page C299 has three problems: (1) It doesn't work with *flex* due to naming conflict of the private variable *n_*. Solution: rename it to *N_*. (2) It doesn't work with *flex* even with (1) solved, due to ‘[…]’ evaluating its arguments twice when *n_* < 3, and due to *flex* saying ‘*z_*[incr *n_*]’ in its definition. Solution: change ‘**if** *N_* < 3: [[[*t*]]]’ to ‘**if** *N_* = 0: [[[]]] **elseif** *N_* = 1: [[[*u_*[[[1]]] ]]] **elseif** *N_* = 2: [[[*u_*[[[1]]], *u_*[[[2]]] ]]]’ on line 6 of the program. (3) See my article “Improvements to the generalized mediation macros in _The METAFONTbook_”, to appear in TUGboat 42:1.
 
 ### Typographical errors
 
